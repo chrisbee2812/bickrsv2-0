@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+  }
+}
+
+.markdown-body h1 { @apply text-4xl font-black mt-12 mb-6 font-display uppercase tracking-tighter; }
+.markdown-body h2 { @apply text-2xl font-black mt-10 mb-4 font-display uppercase tracking-tight text-cyan-500; }
+.markdown-body h3 { @apply text-xl font-bold mt-6 mb-2; }
+.markdown-body p { @apply my-6 leading-relaxed text-slate-400; }
+.markdown-body ul { @apply list-disc list-outside ml-6 my-6 text-slate-400; }
+.markdown-body li { @apply mb-3; }
+.markdown-body pre { @apply bg-slate-900 p-6 rounded-xl my-8 overflow-x-auto border border-slate-800; }
+.markdown-body a { @apply text-cyan-500 underline underline-offset-4 hover:text-cyan-400 transition-colors; }
+
+.blog-post table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: block;
+  overflow-x: auto;
+}
+
+.blog-post th {
+  background-color: #2d3748;  /* Dark header */
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  border: none;
+}
+
+.blog-post td {
+  border-bottom: 1px solid #e2e8f0;  /* Only bottom borders, cleaner look */
+  padding: 0.75rem 1rem;
+}
+
+.blog-post tr:last-child td {
+  border-bottom: none;
+}
+
+.blog-post tr:hover {
+  background-color: #edf2f7;
+}
