@@ -1,13 +1,12 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
-import { ExperienceTimeline } from '../components/ExperienceTimeline';
-import { SkillGrid } from '../components/SkillGrid';
-import { BlogPreview } from '../components/BlogPreview';
 import { Contact } from '../components/Contact';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { blogPosts } from '../data/blogPosts';
 
 export default function Home() {
+  const latestPost = blogPosts[0];
   return (
     <div>
       <Hero />
@@ -65,11 +64,19 @@ export default function Home() {
              </Link>
           </div>
           {/* Mockup highlight of 1 blog post */}
-          <div className="group cursor-pointer">
-             <div className="text-[10px] tracking-[0.3em] font-mono text-slate-500 uppercase mb-4">Latest Publication // May 2026</div>
-             <h3 className="text-4xl font-black text-white uppercase tracking-tighter leading-none mb-6 group-hover:text-cyan-400 transition-colors">From Active Directory to Entra ID: The Identity Evolution</h3>
-             <p className="text-slate-400 text-lg leading-relaxed max-w-2xl">Reflecting on 30 years of AD and why the shift to Entra ID is more than just a name change—it's a paradigm shift in security.</p>
-          </div>
+          {latestPost && (
+            <Link to={`/blog/${latestPost.slug}`} className="group block">
+               <div className="text-[10px] tracking-[0.3em] font-mono text-slate-500 uppercase mb-4">
+                 Latest Publication // {latestPost.date}
+               </div>
+               <h3 className="text-4xl font-black text-white uppercase tracking-tighter leading-tight mb-6 group-hover:text-cyan-400 transition-colors">
+                 {latestPost.title}
+               </h3>
+               <p className="text-slate-400 text-lg leading-relaxed max-w-2xl line-clamp-2">
+                 {latestPost.excerpt}
+               </p>
+            </Link>
+          )}
         </div>
       </section>
 
