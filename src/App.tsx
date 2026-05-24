@@ -35,10 +35,10 @@ function Footer() {
           </div>
           
           <div className="flex gap-4">
-            <a href="#" className="p-4 bg-slate-950 border border-slate-900 text-slate-500 hover:text-cyan-500 hover:border-cyan-500 transition-all">
+            <a href="https://www.linkedin.com/in/chris-bicknell-69a9a136/" className="p-4 bg-slate-950 border border-slate-900 text-slate-500 hover:text-cyan-500 hover:border-cyan-500 transition-all">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="#" className="p-4 bg-slate-950 border border-slate-900 text-slate-500 hover:text-cyan-500 hover:border-cyan-500 transition-all">
+            <a href="mailto:chrisb2812@msn.com" className="p-4 bg-slate-950 border border-slate-900 text-slate-500 hover:text-cyan-500 hover:border-cyan-500 transition-all">
               <Mail className="w-5 h-5" />
             </a>
           </div>
