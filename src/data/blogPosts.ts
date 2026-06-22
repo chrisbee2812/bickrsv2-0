@@ -9,8 +9,8 @@ export const blogPosts: BlogPost[] = [
     category: "Authentication & Access",
     excerpt: "The Storm-0501 campaign offers something far more valuable: a real-world, detailed case study of how sophisticated attackers exploit the seams between on-premises Active Directory and cloud identities.",
     content: `
-# After a short break: A look at the hybrid identity attack surface
-By an IAM consultant who's been governing access since before "cloud" meant anything
+# After a short break: A look at the hybrid identity attack surface.
+By an IAM consultant who's been governing access since before "cloud" meant anything.
 Having had a short break from blogging, I wanted to return with a post that is both timely and relevant to the IAM community. The Storm-0501 campaign has been making waves in the security world, and it offers something far more valuable than just another headline: a real-world, detailed case study of how sophisticated attackers exploit the seams between on-premises Active Directory and cloud identities.
 
 ---
@@ -34,8 +34,8 @@ The attack began, as many do, in the on-premises Active Directory environment. T
 
 **Endpoint Reconnaissance:** Once inside, the attackers performed reconnaissance to identify protected systems. They executed commands to check for Defender for Endpoint services:
 
-sc query sense
-sc query windefend
+~~~sc query sense
+sc query windefend~~~
 
 
 This deliberate evasion tactic reveals a key truth: attackers are actively hunting for unmanaged devices. In this case, only one of the multiple Azure tenants had Defender for Endpoint deployed, creating significant visibility gaps.
@@ -90,7 +90,7 @@ The attack represents a fundamental shift from encrypting files to exfiltrating 
 
 ## 1. Non-Human Identities Are a Critical Attack Vector
 
-Storm-0501 succeeded by exploiting a non-human synced identity (a service account) with Global Administrator privileges and no MFA. This is not an edge case — according to recent ESG research, non-human identities now outnumber human identities by an average factor of 10 to 20.
+Storm-0501 succeeded by exploiting a non-human synced identity (a service account) with Global Administrator privileges and no MFA. This is not an edge case — according to recent ESG research, non-human identities now outnumber human identities by an average factor of between 10:1 to 20:1.
 
 The challenge is that NHIs require fundamentally different management approaches compared to human identities. They often lack clear ownership, are distributed across multiple identity providers, and traditional IAM solutions frequently overlook them.
 
