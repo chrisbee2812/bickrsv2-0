@@ -34,8 +34,10 @@ The attack began, as many do, in the on-premises Active Directory environment. T
 
 **Endpoint Reconnaissance:** Once inside, the attackers performed reconnaissance to identify protected systems. They executed commands to check for Defender for Endpoint services:
 
-~~~sc query sense
-sc query windefend~~~
+~~~
+sc query sense
+sc query windefend
+~~~
 
 
 This deliberate evasion tactic reveals a key truth: attackers are actively hunting for unmanaged devices. In this case, only one of the multiple Azure tenants had Defender for Endpoint deployed, creating significant visibility gaps.
