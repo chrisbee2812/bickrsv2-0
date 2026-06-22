@@ -2,11 +2,161 @@ import { BlogPost } from "../types";
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "5",
+    title: "The Hybrid Identity Attack Surface: Lessons from Storm-0501",
+    slug: "storm-0501-hybrid-identity-attack-surface",
+    date: "June 22, 2026",
+    category: "Authentication & Access",
+    excerpt: "The Storm-0501 campaign offers something far more valuable: a real-world, detailed case study of how sophisticated attackers exploit the seams between on-premises Active Directory and cloud identities.",
+    content: `
+# After a short break: A look at the hybrid identity attack surface
+By an IAM consultant who's been governing access since before "cloud" meant anything
+Having had a short break from blogging, I wanted to return with a post that is both timely and relevant to the IAM community. The Storm-0501 campaign has been making waves in the security world, and it offers something far more valuable than just another headline: a real-world, detailed case study of how sophisticated attackers exploit the seams between on-premises Active Directory and cloud identities.
+
+---
+
+When we talk about securing hybrid identity environments, the conversation often centers on theory and best practices. The Storm-0501 campaign offers something far more valuable: a real-world, detailed case study of how sophisticated attackers exploit the seams between on-premises Active Directory and cloud identities.
+
+Storm-0501 is a financially motivated threat actor active since 2021 that has evolved from deploying traditional ransomware like Sabbath, Hive, and BlackCat to sophisticated cloud-native operations. Their recent campaign against a large enterprise demonstrates a fundamental shift: ransomware no longer requires malware
+
+"Leveraging cloud-native capabilities, Storm-0501 rapidly exfiltrates large volumes of data, destroys data and backups within the victim environment, and demands ransom — all without relying on traditional malware deployment." — Microsoft Threat Intelligence
+
+This post examines the attack chain in detail and extracts actionable lessons for anyone responsible for securing a hybrid identity environment.
+
+---
+
+# The Attack Chain: A Step-by-Step Breakdown
+
+## Phase 1: On-Premises Compromise
+The attack began, as many do, in the on-premises Active Directory environment. The victim was a large enterprise with multiple subsidiaries, each operating independent Active Directory domains connected through trust relationships.
+
+**Initial Access:** Storm-0501 likely gained initial access through stolen credentials provided by access brokers or by exploiting known RCE vulnerabilities in unpatched gateways like Zoho ManageEngine, Citrix NetScaler, or Adobe ColdFusion.
+
+**Endpoint Reconnaissance:** Once inside, the attackers performed reconnaissance to identify protected systems. They executed commands to check for Defender for Endpoint services:
+
+sc query sense
+sc query windefend
+
+
+This deliberate evasion tactic reveals a key truth: attackers are actively hunting for unmanaged devices. In this case, only one of the multiple Azure tenants had Defender for Endpoint deployed, creating significant visibility gaps.
+
+**Credential Harvesting:** The attackers then conducted a **DCSync attack** — a technique that abuses the Directory Replication Service Remote Protocol to impersonate a domain controller and request password hashes for any user in the domain. This allowed them to extract credentials without triggering traditional authentication-based alerts.
+
+**Lateral Movement:** Using tools like Evil-WinRM (which abuses PowerShell over WinRM for remote code execution), the attackers moved laterally across the network. They also leveraged legitimate RMM tools such as AnyDesk and NinjaOne, making detection more difficult.
+
+## Phase 2: The Pivot to the Cloud
+The critical pivot point came when Storm-0501 compromised an **Entra Connect Sync server** that was not onboarded to Defender for Endpoint. This server became their bridge to the cloud.
+
+From this foothold, they used the **Directory Synchronization Account (DSA)** to enumerate users, roles, and Azure resources within the connected Entra ID tenant. Tools like **AzureHound** helped them map relationships and permissions in the Azure environment, identifying potential attack paths and privilege escalation opportunities.
+
+The attackers attempted to sign in as several privileged users but were initially blocked by Conditional Access policies and MFA requirements. This is where the story takes a crucial turn.
+
+## Phase 3: The Identity Escalation That Broke Everything
+
+Undeterred by MFA, Storm-0501 pivoted to a different Active Directory domain and compromised a second Entra Connect server linked to another tenant. This time, they identified a **non-human synced identity** assigned the Global Administrator role in Microsoft Entra ID — and this account lacked MFA registration.
+
+The exploitation was elegant in its simplicity:
+
+- **Reset the on-premises password** for this account
+- **Wait for Entra Connect Sync** to synchronize the new password to the cloud via Password-Hash Synchronization
+- **Authenticate to Entra ID** using the new password
+- **Register a new MFA method** under their control (since none existed)
+- **Find a hybrid-joined device** to satisfy Conditional Access policy requirements for Azure portal access
+
+With a single account lacking MFA, the attackers bypassed Conditional Access, satisfied all policy conditions, and gained Global Administrator access to the cloud domain.
+
+## Phase 4: Cloud Persistence and Total Azure Compromise
+
+**Persistence via Federated Domains:** Using the Global Administrator privileges and the AADInternals tool, Storm-0501 registered a threat-actor-owned Entra ID tenant as a trusted federated domain. This backdoor allowed them to craft SAML tokens to impersonate almost any user in the victim tenant, maintaining access even if the original account was secured.
+
+**Azure Privilege Escalation:** With top-level Entra ID privileges, the attackers invoked the Microsoft.Authorization/elevateAccess/action operation, gaining the User Access Administrator role over all Azure subscriptions. They then assigned themselves the Owner role across every subscription, achieving full administrative control over the entire Azure environment.
+
+## Phase 5: Data Exfiltration, Destruction, and Extortion
+With full Azure Owner privileges, the attackers systematically dismantled the organization's cloud data:
+
+- **Discovery:** Used AzureHound to map critical assets, including sensitive data stores and backup resources
+- **Exfiltration:** Abused Azure Storage public access features to expose storage accounts to the internet, listed access keys, and used **AzCopy** to bulk-exfiltrate data
+- **Defense Evasion:** Removed resource locks and blob immutability policies to enable deletion
+- **Destruction:** Mass-deleted storage accounts, VM snapshots, recovery vaults, and backup containers
+- **Cloud Encryption:** For accounts protected against deletion, they created a Key Vault with a customer-managed key and used Azure Encryption scopes to encrypt the data, then deleted the key
+- **Extortion:** Contacted the victim via a compromised Microsoft Teams account to demand ransom
+
+
+The attack represents a fundamental shift from encrypting files to exfiltrating and destroying data. Organizations cannot simply restore from backups if those backups are also destroyed or encrypted. The attackers' ability to compromise both on-premises and cloud environments simultaneously makes recovery extremely challenging.
+
+---
+
+# Key Lessons for Securing Hybrid Identity
+
+## 1. Non-Human Identities Are a Critical Attack Vector
+
+Storm-0501 succeeded by exploiting a non-human synced identity (a service account) with Global Administrator privileges and no MFA. This is not an edge case — according to recent ESG research, non-human identities now outnumber human identities by an average factor of 10 to 20.
+
+The challenge is that NHIs require fundamentally different management approaches compared to human identities. They often lack clear ownership, are distributed across multiple identity providers, and traditional IAM solutions frequently overlook them.
+
+**Action:**
+- Audit all synced identities, especially service accounts, for MFA enrollment and privilege levels
+- Treat non-human identities with the same rigor as privileged human accounts
+- Consider specialized NHI management solutions that provide visibility into service accounts, secrets, and their critical roles
+
+## 2. Entra Connect Sync Servers Are a High-Value Target
+
+The compromise of Entra Connect Sync servers was the critical bridge enabling cloud access. These servers hold the keys to the kingdom — the Directory Synchronization Account used to synchronize identities and passwords to the cloud.
+
+**Action:**
+- Enable TPM on Entra Connect Sync servers to protect stored credentials
+- Monitor Entra Connect Sync servers as Tier-0 assets with enhanced logging and alerting
+- Ensure these servers are fully onboarded to endpoint detection and response solutions — attackers specifically target unmanaged systems
+
+## 3. MFA Gaps in Hybrid Identity Are Exploitable
+
+The attackers systematically searched for and exploited a non-human Global Administrator account lacking MFA. Once compromised, they registered their own MFA methods, effectively taking ownership of the identity.
+
+**Action:**
+- Enforce MFA on all Global Admin accounts — human and non-human
+- Use phishing-resistant, hardware-backed MFA methods where possible
+- Consider Conditional Access policies that require trusted devices or hybrid-joined devices, not just MFA satisfaction alone
+
+## 4. Visibility Gaps Enable Attacks
+
+The victim had uneven Defender for Endpoint deployment, with only one tenant fully onboarded. The attackers actively checked for unprotected systems and exploited them.
+
+**Action:**
+- Ensure comprehensive endpoint protection across all domains and tenants
+- Eliminate "partial deployment" — attackers will find and exploit unprotected assets
+- Implement cloud-aware SIEM solutions capable of detecting suspicious activity in identity configurations and Azure resource changes
+
+## 5. Attack Path Management Matters More Than Point Solutions
+
+The attack succeeded because it exploited the **relationships** between identities: the Entra Connect Sync relationship, the domain trust relationships, the connections between Entra ID roles and Azure subscription roles. Point security tools (EDR, ITDR, PAM, IGA) were bypassed not because they failed individually, but because the attackers operated in the gaps between them.
+
+**Action:**
+- Move beyond single-product security to attack path management (APM) that maps the complex relationships between identities, permissions, and trust relationships
+- Audit hybrid identity configurations specifically: Entra Connect settings, domain trust relationships, and synchronization accounts
+- Implement proactive detection for federation domain additions, SAML trust modifications, and Global Admin role assignments
+
+## 6. Cloud Backup Destruction Changes Recovery Assumptions
+
+Traditional ransomware response assumes you can restore from backups. Storm-0501 systematically destroyed backups in Azure (VM snapshots, Recovery Vaults, storage account backups) before demanding ransom. The "steal and destroy" model eliminates the safety net.
+
+**Action:**
+- Implement immutable storage policies with resource-level locks that require higher-level approval to modify
+- Use encryption and maintain keys outside the compromised environment (consider air-gapped key storage)
+- Regularly test recovery procedures to ensure that backups are not only available but also protected from deletion or tampering
+
+---
+
+## Conclusion: The Hybrid Identity Attack Surface Is Real and Growing
+
+The most dangerous vulnerabilities in hybrid identity environments aren't the ones you know about — they're the non-human identities you've forgotten, the legacy sync servers you assumed were protected, and the gaps between your on-premises and cloud monitoring tools. Attackers are actively hunting for these weaknesses. The question is whether your defenses are ready when they find them.
+`
+  },
+  {
     id: "4",
     title: "The Unspoken IAM Crisis: MFA, Biometrics, and the Talent You're About to Lose",
     slug: "mfa-biometrics-iam-crisis",
     date: "May 24, 2026",
-    category: "Authewntication & Access",
+    category: "Authentication & Access",
     excerpt: "My best people are refusing to use the security tools I'm forcing on them. And I don't blame them.",
     content: `
 # By an IAM consultant who's been governing access since before "cloud" meant anything
