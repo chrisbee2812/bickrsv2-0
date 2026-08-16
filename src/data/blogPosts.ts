@@ -7,7 +7,7 @@ export const blogPosts: BlogPost[] = [
     slug: "rise-of-non-human-identities-machines-outnumbering-humans",
     date: "August 8, 2026",
     category: "Authentication & Access",
-    excerpt: "What if you want to look beyond Microsoft? Whether driven by concerns over vendor lock-in, data sovereignty, multi-cloud strategy, or simply a desire for greater flexibility, many organisations are exploring alternatives.",
+    excerpt: "The definition of identity has expanded dramatically. Applications, containers, APIs, scripts, and service accounts now operate as independent identities alongside your employees, customers, and partners across cloud and hybrid environments. These non-human identities (NHIs) are deeply embedded in IT infrastructure. In many organisations, they outnumber human identities by a factor of 25 to 50. According to Palo Alto Networks' 2026 Identity Security Landscape report, the ratio stands at 109 machine identities for every human—up from 82-to-1 just a year earlier.",
     content: `
 # The Rise of Non-Human Identities: Why Machines Are Outnumbering Humans 80:1 and What to Do About It
 By an IAM consultant who's been governing access since before "cloud" meant anything.
