@@ -159,7 +159,7 @@ The classification framework that IDMWORKS applies in practice evaluates four di
 
 - **Governance maturity**: How well is this identity managed? Credentials with automated rotation, auditing, and owner accountability are lower risk than those that are static or orphaned.
 
-### 3. Ownnership: Every NHI Needs a Human Owner
+### 3. Ownership: Every NHI Needs a Human Owner
 
 Clear ownership is the starting point for NHI management. Every non-human identity must have a named owner responsible for its authorization, review, and decommissioning. Without ownership, governance is theoretical.
 
