@@ -101,7 +101,7 @@ export function SkillGrid() {
                       <h3 className="font-black text-white uppercase tracking-widest text-xs">{subcat.label}</h3>
                     </div>
                     {skills.filter(s => s.category === cat.id && s.subcategories.includes(subcat.id)).map(skill => (
-                      <div key={skill.name}>
+                      <div key={skill.name} className="mb-4">
                         {/* <div className="flex items-center gap-4 mb-10">
                           <cat.icon className="w-5 h-5 text-cyan-500" />
                           <h3 className="font-black text-white uppercase tracking-widest text-xs">{skill.subcategories}</h3>
