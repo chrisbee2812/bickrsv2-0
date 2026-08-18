@@ -44,7 +44,7 @@ function Footer() {
           </div>
         </div>
         
-        <div className="mt-20 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-mono text-slate-800 uppercase tracking-[0.5em]">
+        <div className="mt-20 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-mono text-slate-600 uppercase tracking-[0.5em]">
           <div>Protocol // IAM-CONSULTANT-V1</div>
           <div>© 2026 IDENTITY FIRST. ALL RIGHTS RESERVED.</div>
         </div>
