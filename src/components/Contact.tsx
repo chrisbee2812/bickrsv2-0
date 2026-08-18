@@ -23,7 +23,7 @@ export function Contact() {
                 </div>
                 <div className="h-px w-12 bg-slate-900 group-hover:bg-cyan-500 transition-all"></div>
               </a>
-              <a href="mailto:chrisb2812@proton.me" className="flex items-center justify-between p-6 bg-slate-950 border border-slate-900 hover:border-cyan-500 transition-colors group">
+              <a href="mailto:chris@bickrs.com" className="flex items-center justify-between p-6 bg-slate-950 border border-slate-900 hover:border-cyan-500 transition-colors group">
                 <div className="flex items-center gap-4">
                   <Mail className="w-5 h-5 text-cyan-500" />
                   <span className="text-xs font-black uppercase tracking-[0.3em] text-white">Direct HQ</span>
