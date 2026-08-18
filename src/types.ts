@@ -21,5 +21,6 @@ export interface BlogPost {
 export interface Skill {
   name: string;
   level: number; // 0-100
-  category: 'IAM' | 'Microsoft Core' | 'Cloud & Security';
+  category: 'IAM' | 'Migration' | 'Cloud' | 'Security' | 'Automation';
+  subcategories: string[];
 }
