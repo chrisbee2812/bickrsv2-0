@@ -77,7 +77,138 @@ export function SkillGrid() {
           </div>
         </div>
 
-        <div className="bg-slate-800 border border-slate-800 overflow-hidden rounded-xl">
+        <div className="py-6 px-12 bg-slate-950 border border-slate-800 overflow-hidden rounded-xl">
+          <div className="flex items-center gap-4 mb-10">
+            <Shield className="w-5 h-5 text-cyan-500" />
+            <h3 className="font-black text-white uppercase tracking-widest text-xs">Training and Qualifications</h3>
+          </div>
+
+          <div className="border border-slate-800 overflow-hidden rounded-xl mb-10 py-6">
+            <div className="p-6 bg-slate-950">
+              
+              <div className="font-black text-white uppercase tracking-widest text-xs">
+                <p>Click the course name/qualification to view details</p>
+              </div>
+            </div>
+            
+            <div key="t&q" className="px-6 bg-slate-950 grid md:grid-cols-3 gap-px ">
+              <div>
+                <div className="flex items-center gap-4 mb-2">
+                  {/* <subcat.icon className="w-5 h-5 text-cyan-500" /> */}
+                  <h3 className="font-black text-white uppercase tracking-widest text-xs">Azure</h3>                      
+                </div>
+                <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
+                  <span className="text-slate-300 font-mono tracking-tighter">
+                    <a href="https://learn.kodekloud.com/learn/certificate/55484a3c-96ed-4414-89bf-a96c6c782c50" target="_blank" rel="noopener noreferrer">
+                      AZ-900 - Azure Fundamentals
+                    </a>
+                    <p className="text-slate-400 text-[10px]">
+                      Training completed with KodeKloud
+                    </p>
+                  </span>
+                </div>
+                <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
+                  <span className="text-slate-300 font-mono tracking-tighter">
+                    <a href="https://learn.kodekloud.com/learn/certificate/364a1515-7371-4bec-8125-8ddf07fca3f8" target="_blank" rel="noopener noreferrer">
+                      AZ-104 - Azure Administrator
+                    </a>
+                    <p className="text-slate-400 text-[10px]">
+                      Training completed with KodeKloud
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center gap-4 mb-2">
+                  {/* <subcat.icon className="w-5 h-5 text-cyan-500" /> */}
+                  <h3 className="font-black text-white uppercase tracking-widest text-xs">Linux</h3>                      
+                </div>
+                <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
+                  <span className="text-slate-300 font-mono tracking-tighter">
+                    <a href="https://learn.kodekloud.com/learn/certificate/24a8131c-1501-42e4-a6e4-1f0b70f12180" target="_blank" rel="noopener noreferrer">
+                      Linux Foundation Certified System Admin (LFCS)
+                    </a>
+                  <p className="text-slate-400 text-[10px]">
+                    Training completed with KodeKloud
+                  </p>                    
+                  </span>
+                </div>
+                <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
+                  <span className="text-slate-300 font-mono tracking-tighter">
+                    <a href="https://learn.kodekloud.com/learn/certificate/2db0cff6-44af-42a5-8c8d-56158b261fe9" target="_blank" rel="noopener noreferrer">
+                      Linux Basics
+                    </a>
+                    <p className="text-slate-400 text-[10px]">
+                      Training completed with KodeKloud
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <div className="flex items-center gap-4 mb-2">
+                  {/* <subcat.icon className="w-5 h-5 text-cyan-500" /> */}
+                  <h3 className="font-black text-white uppercase tracking-widest text-xs">Modern Web Development</h3>                      
+                </div>
+                <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
+                  <span className="text-slate-300 font-mono tracking-tighter">
+                    <a href="https://scrimba.com/certificate-cert24zAwPPowNT25CbRKzo36Sdsnfp17jUpRFhPE" target="_blank" rel="noopener noreferrer">
+                      Frontend Developer Career Path
+                    </a>
+                    <p className="text-slate-400 text-[10px]">
+                      Training completed with Scrimba
+                    </p>
+                  </span>
+                </div>
+                <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
+                  <span className="text-slate-300 font-mono tracking-tighter">
+                    <a href="https://scrimba.com/certificate-cert2JbLs3qgAyfqjYAvNr7pMddfuinauRmSJxZFr2" target="_blank" rel="noopener noreferrer">
+                      Typescript
+                    </a>
+                    <p className="text-slate-400 text-[10px]">
+                      Training completed with Scrimba
+                    </p>
+                  </span>
+                </div>
+                <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
+                  <span className="text-slate-300 font-mono tracking-tighter">
+                    <a href="https://scrimba.com/certificate-cert2JbLs3qgAyfqjYAvNr7pMdcbfhhVRa6Am1USQu" target="_blank" rel="noopener noreferrer">
+                      Advanced React
+                    </a>
+                    <p className="text-slate-400 text-[10px]">
+                      Training completed with Scrimba
+                    </p>
+                  </span>
+                </div>
+                <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
+                  <span className="text-slate-300 font-mono tracking-tighter">
+                    <a href="https://scrimba.com/certificate-cert24zAwPPowNT25CbRKzo36SgrNvP5TD1NTLhPS" target="_blank" rel="noopener noreferrer">
+                      JavaScript
+                    </a>
+                    <p className="text-slate-400 text-[10px]">
+                      Training completed with Scrimba
+                    </p>
+                  </span>
+                </div>
+              </div>
+                
+                  {/* <div className="flex items-center gap-4 mb-10">
+                    <cat.icon className="w-5 h-5 text-cyan-500" />
+                    <h3 className="font-black text-white uppercase tracking-widest text-xs">{skill.subcategories}</h3>
+                  </div> */}
+                  {/* <div className="flex justify-between text-[10px] font-black uppercase tracking-widest mb-3">
+                    <span className="text-slate-300 font-mono tracking-tighter">{skill.name}</span>
+                    <span className="text-cyan-500">{skill.level}%</span>
+                  </div> */}
+                  {/* <div className="h-0.5 bg-slate-900 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                      className="h-full bg-cyan-500"
+                    />
+                  </div> */}
+            </div>
+          </div>
           {categories.map((cat, idx) => (
             <motion.div
               key={cat.id}
@@ -85,8 +216,11 @@ export function SkillGrid() {
               whileInView={{ opacity: 1 }}
               transition={{ delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="p-12 bg-slate-950"
+              className="py-6 bg-slate-950"
             >
+
+              
+
               <div className="flex items-center gap-4 mb-10">
                 <cat.icon className="w-5 h-5 text-cyan-500" />
                 <h3 className="font-black text-white uppercase tracking-widest text-xs">{cat.label}</h3>

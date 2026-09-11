@@ -21,21 +21,21 @@ export const experiences: Experience[] = [
   },
   {
     id: "3",
-    title: "Infrastructure Specialist",
-    company: "Cobham - Contract",
-    period: "2019 - 2020",
-    description: "Designed, documented and implemented a hybrid infrastructure solution. Ensuring secure integration between on-premises Active Directory and cloud services. Focused on identity synchronization, access management, and secure hybrid architecture. Further designed and documented a VMware AirWatch MDM environment for secure mobile device management.",
-    technologies: ["AD DS", "Group Policy", "Windows Server", "PowerShell", "VMware AirWatch", "Office 365", "Azure AD Connect", "Azure AD"],
-    type: 'Hybrid'
-  },
-  {
-    id: "4",
     title: "Active Directory Specialist",
     company: "DXC - Contract",
     period: "2018 - 2019",
     description: "Designed, documented and implemented a large scale Active Directory environment for a major client. Focused on secure domain design, Group Policy management, and AD DS hardening best practices.",
     technologies: ["AD DS", "Group Policy", "Windows Server", "PowerShell"],
     type: 'Microsoft Legacy'
+  },
+  {
+    id: "4",
+    title: "Infrastructure Specialist",
+    company: "Cobham - Contract",
+    period: "2019 - 2020",
+    description: "Designed, documented and implemented a hybrid infrastructure solution. Ensuring secure integration between on-premises Active Directory and cloud services. Focused on identity synchronization, access management, and secure hybrid architecture. Further designed and documented a VMware AirWatch MDM environment for secure mobile device management.",
+    technologies: ["AD DS", "Group Policy", "Windows Server", "PowerShell", "VMware AirWatch", "Office 365", "Azure AD Connect", "Azure AD"],
+    type: 'Hybrid'
   },
   {
     id: "5",
