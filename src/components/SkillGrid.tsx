@@ -97,6 +97,13 @@ export function SkillGrid() {
                   {/* <subcat.icon className="w-5 h-5 text-cyan-500" /> */}
                   <h3 className="font-black text-white uppercase tracking-widest text-xs">Azure</h3>                      
                 </div>
+                <div key="SC-300" className="mb-2 text-[12px] font-mono tracking-tighter">
+                  <span className="text-slate-300 font-mono tracking-tighter">
+                    <div className="font-black uppercase">
+                        SC-300 Currently Studying - Microsoft Identity & Access Administrator
+                    </div>
+                  </span>
+                </div>
                 <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
                     <div className="font-black uppercase">
