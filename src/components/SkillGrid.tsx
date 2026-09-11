@@ -99,9 +99,11 @@ export function SkillGrid() {
                 </div>
                 <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
-                    <a href="https://learn.kodekloud.com/learn/certificate/55484a3c-96ed-4414-89bf-a96c6c782c50" target="_blank" rel="noopener noreferrer">
-                      AZ-900 - Azure Fundamentals
-                    </a>
+                    <div className="font-black uppercase">
+                      <a href="https://learn.kodekloud.com/learn/certificate/55484a3c-96ed-4414-89bf-a96c6c782c50" target="_blank" rel="noopener noreferrer">
+                        AZ-900 - Azure Fundamentals
+                      </a>
+                    </div>
                     <p className="text-slate-400 text-[10px]">
                       Training completed with KodeKloud
                     </p>
@@ -109,9 +111,11 @@ export function SkillGrid() {
                 </div>
                 <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
-                    <a href="https://learn.kodekloud.com/learn/certificate/364a1515-7371-4bec-8125-8ddf07fca3f8" target="_blank" rel="noopener noreferrer">
-                      AZ-104 - Azure Administrator
-                    </a>
+                    <div className="font-black uppercase">
+                      <a href="https://learn.kodekloud.com/learn/certificate/364a1515-7371-4bec-8125-8ddf07fca3f8" target="_blank" rel="noopener noreferrer">
+                        AZ-104 - Azure Administrator
+                      </a>
+                    </div>
                     <p className="text-slate-400 text-[10px]">
                       Training completed with KodeKloud
                     </p>
@@ -125,9 +129,11 @@ export function SkillGrid() {
                 </div>
                 <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
-                    <a href="https://learn.kodekloud.com/learn/certificate/24a8131c-1501-42e4-a6e4-1f0b70f12180" target="_blank" rel="noopener noreferrer">
-                      Linux Foundation Certified System Admin (LFCS)
-                    </a>
+                    <div className="font-black uppercase">
+                      <a href="https://learn.kodekloud.com/learn/certificate/24a8131c-1501-42e4-a6e4-1f0b70f12180" target="_blank" rel="noopener noreferrer">
+                        Linux Foundation Certified System Admin (LFCS)
+                      </a>
+                    </div>
                   <p className="text-slate-400 text-[10px]">
                     Training completed with KodeKloud
                   </p>                    
@@ -135,9 +141,11 @@ export function SkillGrid() {
                 </div>
                 <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
+                    <div className="font-black uppercase">
                     <a href="https://learn.kodekloud.com/learn/certificate/2db0cff6-44af-42a5-8c8d-56158b261fe9" target="_blank" rel="noopener noreferrer">
                       Linux Basics
                     </a>
+                    </div>
                     <p className="text-slate-400 text-[10px]">
                       Training completed with KodeKloud
                     </p>
@@ -151,9 +159,11 @@ export function SkillGrid() {
                 </div>
                 <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
-                    <a href="https://scrimba.com/certificate-cert24zAwPPowNT25CbRKzo36Sdsnfp17jUpRFhPE" target="_blank" rel="noopener noreferrer">
-                      Frontend Developer Career Path
-                    </a>
+                    <div className="font-black uppercase">
+                      <a href="https://scrimba.com/certificate-cert24zAwPPowNT25CbRKzo36Sdsnfp17jUpRFhPE" target="_blank" rel="noopener noreferrer">
+                        Frontend Developer Career Path
+                      </a>
+                    </div>
                     <p className="text-slate-400 text-[10px]">
                       Training completed with Scrimba
                     </p>
@@ -161,9 +171,11 @@ export function SkillGrid() {
                 </div>
                 <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
+                    <div className="font-black uppercase">
                     <a href="https://scrimba.com/certificate-cert2JbLs3qgAyfqjYAvNr7pMddfuinauRmSJxZFr2" target="_blank" rel="noopener noreferrer">
                       Typescript
                     </a>
+                    </div>
                     <p className="text-slate-400 text-[10px]">
                       Training completed with Scrimba
                     </p>
@@ -171,9 +183,11 @@ export function SkillGrid() {
                 </div>
                 <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
-                    <a href="https://scrimba.com/certificate-cert2JbLs3qgAyfqjYAvNr7pMdcbfhhVRa6Am1USQu" target="_blank" rel="noopener noreferrer">
-                      Advanced React
-                    </a>
+                    <div className="font-black uppercase">
+                      <a href="https://scrimba.com/certificate-cert2JbLs3qgAyfqjYAvNr7pMdcbfhhVRa6Am1USQu" target="_blank" rel="noopener noreferrer">
+                        Advanced React
+                      </a>
+                    </div>
                     <p className="text-slate-400 text-[10px]">
                       Training completed with Scrimba
                     </p>
@@ -181,9 +195,11 @@ export function SkillGrid() {
                 </div>
                 <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
-                    <a href="https://scrimba.com/certificate-cert24zAwPPowNT25CbRKzo36SgrNvP5TD1NTLhPS" target="_blank" rel="noopener noreferrer">
-                      JavaScript
-                    </a>
+                    <div className="font-black uppercase">
+                      <a href="https://scrimba.com/certificate-cert24zAwPPowNT25CbRKzo36SgrNvP5TD1NTLhPS" target="_blank" rel="noopener noreferrer">
+                        JavaScript
+                      </a>
+                    </div>
                     <p className="text-slate-400 text-[10px]">
                       Training completed with Scrimba
                     </p>
