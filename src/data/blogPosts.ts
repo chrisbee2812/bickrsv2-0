@@ -2,6 +2,329 @@ import { BlogPost } from "../types";
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "10",
+    title: "The Phishing-Resistant MFA Gap: Why We Know Better But Still Aren't Doing It",
+    slug: "the-phishing-resistant-mfa-gap-why-we-know-better-but-still-arent-doing-it",
+    date: "September 12, 2026",
+    category: "Authentication & Access",
+    excerpt: "93% of users still use passwords. The majority of authentication is still happening with a credential that can be stolen, replayed, and phished.",
+    content: `
+# The Phishing-Resistant MFA Gap: Why We Know Better But Still Aren't Doing It
+By an IAM consultant who's been governing access since before "cloud" meant anything.
+
+---
+
+## Introduction
+
+I have a confession to make. My last blog post was close to a month ago. Between client work, family commitments, and the general chaos of life, the writing slipped. But here's the thing: the topic I want to tackle today has been staring me in the face every single day. It's the gap between what we know we should be doing and what we're actually doing.
+
+That gap has a name: phishing-resistant MFA.
+
+Let me be clear about where I stand. I've spent thirty years in identity. I've watched us move from passwords to SMS codes to push notifications. Each step was an improvement. None of them solved the fundamental problem. Phishing still works because users still type credentials into fake websites. The attacker doesn't break the cryptography. They just ask the user to hand over the keys.
+
+Phishing-resistant MFA—passkeys, FIDO2, WebAuthn—changes that equation. It's not an incremental improvement. It's an architectural shift. The credential never leaves the device. There's nothing to phish.
+
+So why, according to the FIDO Alliance's own research, have only **13% of organizations deployed passkeys at scale**, despite 93% being somewhere on the adoption path?
+
+That's the question I want to explore. Not the theory. The practice. The reasons we're stuck.
+
+---
+
+## The Data: A Confidence Gap in Plain Sight
+
+Let me start with the numbers, because they tell a story that's hard to ignore.
+
+Okta's Secure Sign-in Trends Report 2025 found that phishing-resistant authenticators—FastPass, WebAuthn, and smart cards combined—grew from **8.6% to 14.0%** of users in a single year. That's a 63% increase. FastPass alone nearly doubled, from 6.7% to 13.3%. SMS usage declined from 17.5% to 15.3%. Password use dipped from 95.1% to 93.0%.
+
+These are good numbers. They show movement. But look closer: **93% of users still use passwords**. The majority of authentication is still happening with a credential that can be stolen, replayed, and phished.
+
+Now look at the FIDO Alliance's June 2026 report. They surveyed 500 IT and cybersecurity decision makers across the US, Canada, UK, France, and Germany. The findings are striking:
+
+- **93%** of organizations are somewhere on the path to adopting phishing-resistant MFA.
+- **65%** report high or expert technical familiarity with passkeys
+- Only **13%** have deployed passkeys at scale.
+
+And here's the kicker: **70% of respondents reported at least one identity-related security incident**. The report links the low deployment rate directly to the high incident rate.
+
+In other words: we know what to do. We're just not doing it.
+
+---
+
+## The Operational Barriers Are Real
+
+I don't want to dismiss the barriers. They are real, and they are significant. Cisco Duo's 2025 State of Identity Security report identified four leading obstacles:
+
+
+| Barrier | Percentage Citing It |
+|--------|----------------------|
+| Token management complexity | 57% |
+| Extra training and support requirements | 53% |
+| Hardware token cost | 47% |
+| Compatibility issues | 45% |
+
+These aren't excuses. They're legitimate operational challenges. Deploying passkeys at scale means integrating with existing SSO models, MFA mechanisms, and device management workflows. It means managing the lifecycle of credentials that are tied to devices, not servers. It means retraining users, updating help desk procedures, and handling the inevitable "I lost my phone" scenarios.
+
+But here's what strikes me: **only 19% of security teams have fully implemented FIDO2 tokens**, despite widespread recognition of phishing-resistant MFA as a priority. And **87% of security leaders call phishing-resistant MFA a priority, but only 33% feel confident in their phishing controls**.
+
+That's a confidence gap. And it's one that attackers are actively exploiting.
+
+---
+
+## The Threat Landscape Is Forcing the Issue
+
+The 2025 Verizon Data Breach Investigations Report (DBIR) provides the context we need to take this seriously:
+
+- **Credential abuse accounted for 22% of all breaches** as an initial access vector—the single most common entry point
+
+- **Phishing accounted for 16% of breaches**
+
+- **Infostealers compromised 30% of corporate-managed devices and 46% of unmanaged devices in their logs**
+
+- Among ransomware victims, **54% had prior credential exposure** in infostealer logs
+
+And the Snowflake breach demonstrated the pattern perfectly: attackers exploited the fact that **MFA was not mandatory**, then used compromised credentials to breach approximately 165 customer accounts. Roughly 80% of those accounts had prior credential exposure in infostealer logs.
+
+The DBIR also documents a surge in **MFA bypass techniques**, including prompt bombing, token theft, and adversary-in-the-middle attacks. These are precisely the attacks that phishing-resistant MFA is designed to stop. Token theft doesn't work when the token never leaves the device. Adversary-in-the-middle doesn't work when there's no credential to intercept.
+
+**The attackers are evolving. Our defenses need to evolve faster.**
+
+---
+
+## The Business Case Is Overwhelming
+
+If the security argument isn't enough, the business case should be.
+
+The FIDO Alliance's Passkey Index, launched in October 2025, provides the first composite view of passkey utilization from companies including Amazon, Google, Microsoft, PayPal, and TikTok. The findings are remarkable:
+
+| Metric | Passkeys | Other Methods |
+|--------|----------------------|----------------------|
+| Sign-in time | 8.5 seconds | 17.2 seconds |
+| Sign-in success rate | 93% | 63% |
+| Help desk incidents |  **81% reduction** | - |
+
+Passkeys reduce sign-in time by 49%. They have a 30% higher success rate than other methods. And they led to an 81% reduction in login-related help desk incidents.
+
+The Liminal Passkey Adoption Study 2025, which surveyed 200 organizations, found that 63% of respondents ranked passkeys as their top authentication investment priority for the next year. 85% of those who had already adopted passkeys reported strong satisfaction with both the decision and the results. 97% said their organization is willing to fully transition to a passkey-based strategy.
+
+And here's the part that should get the attention of every CISO: 49% of current implementers report adoption rates exceeding 75%, outperforming their initial expectations.
+
+Passkeys work. The people who deploy them are happy. So why aren't we deploying them?
+
+---
+
+## The Enrollment Problem: Where Rollouts Stall
+
+This is where the operational reality meets the strategic intent. I've seen it in my own consulting work. The technology works. The business case is sound. But the rollout stalls.
+
+Security Boulevard's analysis of why most passkey rollouts stall at 5% adoption identified eight patterns that successful rollouts share. The most important insight is that you cannot treat passkey enrollment as a technical problem. It's a behavioral problem.
+
+The data from MojoAuth's customer rollouts is instructive:
+
+- 43% of organizations cite implementation complexity as their primary barrier
+- User experience and enrollment design significantly impact adoption rates
+- eBay found that biometric prompts right in front of the user led to 75% adoption, while asking users to find the setting manually led to 10% adoption
+
+The lesson is clear: if you want people to adopt a new security habit, you have to make the path of least resistance the secure one.
+
+The eight patterns that successful rollouts share are:
+
+1. Conditional UI — Surface passkeys automatically when the browser supports them
+2. Post-login prompts — Ask after a successful login, when trust is highest
+3. Mandatory for high-value roles — Apply selectively, not as a blanket policy
+4. Signup default with opt-out — Make passkeys the default for new accounts
+5. Re-prompt on login friction — Offer passkeys when users hit a password problem
+6. Cross-device onboarding — Use QR codes to enroll on the device users actually use
+7. Lifecycle re-engagement — Prompt at natural moments: next login, billing update, security settings
+8. One-time education tooltips — A single sentence explaining what a passkey is raises completion by 30-50%
+
+The sequence matters. Start with zero-risk patterns. Measure. Then add friction only when you've established the baseline.
+
+---
+
+## The Regulatory Pressure Is Building
+
+If the business case and the threat landscape aren't enough, regulation is now forcing the issue.
+
+In the UAE, India, and the Philippines, financial institutions face mid-2026 deadlines to kill off SMS-based one-time passwords. This isn't a suggestion. It's a mandate.
+
+The FIDO Alliance's research found that 45% of organizations cite reducing phishing and credential-based breaches as the main driver for moving to passwordless authentication. 44% cite the need to cut IT costs from password resets and help desk load.
+
+And Microsoft's own experience shows what's possible. The company reported that 92% of its employee accounts now use phishing-resistant MFA as part of its Secure Future Initiative. If Microsoft can achieve 92% adoption across a workforce of hundreds of thousands, the rest of us have no excuse.
+
+---
+
+## What This Means for IAM Practitioners
+
+I want to bring this back to you—the IAM practitioner reading this. What should you actually do?
+
+### 1. Stop treating passkeys as a project. Treat them as a program.
+
+The organizations that succeed with passkeys don't run a six-month project and declare victory. They build a program that runs indefinitely. Enrollment is not a one-time event. It's a continuous process that touches every user lifecycle event: onboarding, device change, role change, offboarding.
+
+### 2. Measure what matters.
+
+The wrong question is "how many users have created a passkey." The right question is "what percentage of authenticated sessions completed via passkey in the last 30 days". Track passkey login share, not enrollment counts. Enrollment without usage is vanity.
+
+### 3. Design for behavior, not technology.
+
+The eBay data is a warning: manual enrollment leads to 10% adoption. Contextual prompts lead to 75%. Your enrollment flow is a product design problem, not an infrastructure problem. Treat it that way.
+
+### 4. Start with the zero-risk wins.
+
+Conditional UI. Education tooltips. Post-login prompts. These are low-friction, high-impact starting points. Measure the baseline. Then layer on more assertive patterns as you learn what works in your environment.
+
+### 5. Don't deploy passkeys in isolation.
+
+The FIDO Alliance research found that even among organizations that had deployed passkeys, 57% still relied on phishable methods for primary everyday workforce authentication. Adding a secure door doesn't help if the old door remains open. Passkeys need to be part of a comprehensive identity governance strategy that includes access revocation, lifecycle management, and continuous monitoring.
+
+---
+
+## Conclusion: The Gap Is a Choice
+
+The 13% deployment figure is not a technology failure. It's a governance failure. It's a prioritization failure. It's a failure to treat identity security as a risk metric that belongs on the board agenda, not just in the IT department.
+
+The data is unambiguous. Passkeys are faster, more secure, and cheaper to operate. They reduce help desk load. They improve user experience. They stop the attacks that keep showing up in the breach reports.
+
+And yet, most of us are still stuck at 5% adoption, waiting for the perfect moment.
+
+The perfect moment was yesterday.
+
+The gap between 93% awareness and 13% deployment is not a knowledge gap. It's an execution gap. And execution is a choice.
+`
+  },
+  {
+    id: "9",
+    title: "When OAuth Becomes a Backdoor: Three Lessons from the Vercel Breach for IAM Professionals",
+    slug: "when-oauth-becomes-a-backdoor-three-lessons-from-the-vercel-breach-for-iam-professionals",
+    date: "August 22, 2026",
+    category: "Authentication & Access",
+    excerpt: "In April 2026, Vercel confirmed a security incident: attackers gained access to a Vercel employee's Google Workspace account through an OAuth grant to a third-party AI tool called Context.ai, and from there moved laterally into Vercel's internal systems.",
+    content: `
+# When OAuth Becomes a Backdoor: Three Lessons from the Vercel Breach for IAM Professionals
+By an IAM consultant who's been governing access since before "cloud" meant anything.
+
+---
+
+## Introduction: The Vercel Breach and the OAuth Backdoor
+
+In April 2026, Vercel confirmed a security incident: attackers gained access to a Vercel employee's Google Workspace account through an OAuth grant to a third-party AI tool called Context.ai, and from there moved laterally into Vercel's internal systems. Initially, the incident was framed as an individual mistake—an employee who over-authorised an app. But as the details emerged, a more uncomfortable picture took shape. This was not a story about a careless click. It was a structural identity trust failure.
+
+As an IAM professional, I paid attention to this breach not just because I use Vercel to host websites, but because it captures a defining tension of the AI + SaaS era: as we delegate more trust to third-party applications, identity boundaries are blurring, and our governance frameworks have not caught up.
+
+---
+
+## 1. The Attack Chain: This Was Not a Code Breach 
+
+The key to understanding this incident is to abandon the narrative that "someone hacked Vercel." The attackers did not exploit a zero-day in Vercel's code. They did not breach its infrastructure. They walked a path that was fully authorised and fully trusted.
+
+The attack started outside Vercel. According to reports, an employee at Context.ai downloaded a Roblox cheat, which was infected with Lumma Stealer malware. That malware searched the compromised machine for valuable tokens, including access keys for Vercel and other service providers. With Context.ai's systems compromised, OAuth tokens stored within them were stolen—including a token belonging to a Vercel employee.
+
+That Vercel employee had previously signed into Context.ai using their corporate account and granted "Allow All" OAuth permissions, giving the tool access to their enterprise Google Workspace. Once the attackers had the token, they did not need a password. They did not need to defeat MFA. They simply presented a valid token and entered Vercel's Google Workspace environment as that employee, then moved laterally into further internal systems.
+
+Vercel's CEO described the attackers with "remarkable speed and depth of understanding." That is not surprising. The attackers were not breaking in. They were using access that had already been granted.
+
+---
+
+## 2. The Core Problem: The Clean Source Principle Broke Down
+
+This incident brings to mind a concept that was hammered home in the Active Directory era: the **Clean Source Principle**.
+
+The principle states: the security of any resource is no stronger than the security of every other resource that has control over it.
+
+In an AD environment, this is why domain controllers must be treated as Tier 0 assets. Anything that can modify a domain controller can, indirectly, modify everything the domain controls. As SpecterOps analysis has pointed out, the Vercel incident is the same principle manifesting at the **identity layer**.
+
+The moment the Vercel employee granted Context.ai "Allow All" OAuth permissions, Context.ai's infrastructure security, its endpoint security, and its employees' security habits all became part of Vercel's identity security posture. The security of Vercel's Google Workspace now depended, in part, on Context.ai's AWS security groups and on whether a Context.ai employee clicked on that Roblox cheat.
+
+That dependency was never modelled, never assessed, and never entered any risk register. It was created by an employee clicking through an OAuth consent screen. No identity team analysed what it meant. No one marked that trust edge on an attack graph.
+
+**This is the most dangerous structural blind spot of the AI + SaaS era: trust relationships are being established outside the visibility of IAM.**
+
+---
+
+## 3. Non-Human Identities: The Shadow Administrators We Ignore
+
+One fact in this incident is easy to overlook: Context.ai was not "a tool." **It was a non-human identity (NHI) with delegated rights**. See my previous blog post, "The Rise of Non-Human Identities," for a deep dive into the NHI problem.
+
+Every AI tool that receives OAuth authorisation functions as a kind of service account within your identity system. It can authenticate. It can access resources. It can act on a user's behalf. But unlike human accounts, it is almost never included in regular access reviews.
+
+StrongDM's analysis put it bluntly: "Most organisations today are granting AI tools the same standing access as employees while overlooking the same security controls." Once an OAuth grant is established, it is effectively permanent. Tokens do not expire when an employee leaves. They do not reset when passwords change. They do not become invalid when MFA is enabled.
+
+Proofpoint has previously demonstrated that OAuth applications can serve as a **persistence mechanism**: even after original credentials are rotated, application-layer access can survive.
+
+Context.ai, as an "AI Office Suite," would have requested deep access to deliver value: email, files, calendars, internal knowledge bases. Those are exactly the things attackers want. And when that tool was compromised, **the attackers inherited every right it had been granted**, regardless of how those rights were granted.
+
+**This is the shadow administrator problem: your IAM system cannot see them, your SIEM alerts do not cover them, and your access review process does not include them. But they hold real rights.**
+
+---
+
+## 4. The "Sensitive / Non-Sensitive" Environment Variable Trap
+
+There is a highly practical lesson in the Vercel incident: attackers enumerated and read environment variables that had not been marked as "sensitive." In Vercel's system, these are stored in plaintext.
+
+Vercel subsequently changed the default for new variables to "sensitive" and required users to rotate all non-sensitive variables. But a deeper issue was exposed: the binary "sensitive / non-sensitive" classification is itself fragile.
+
+Tanium's analysis raised the key question: "Can this value reveal architecture, naming conventions, or trust relationships? Can this variable help enumerate downstream systems?"
+
+A seemingly harmless variable—an internal service hostname, a non-production API endpoint, a team naming convention—can become a springboard for enumeration and lateral movement in an attacker's hands. The Vercel attacker's rapid enumeration of non-sensitive variables demonstrated "a deep understanding of Vercel systems."
+
+**When you make a binary "sensitive / non-sensitive" decision about environment variables, you are gambling that attackers will not use "non-sensitive" information to find "sensitive" things. That bet is becoming less and less favourable.**
+
+---
+
+## 5. An Action Framework for IAM Professionals
+
+The Vercel incident is not an isolated case. It reflects a widening gap between the speed of AI tool adoption and our identity governance capability. Here is what I believe should be prioritised.
+
+### 5.1 Audit OAuth Grants, Especially AI Tools
+
+Ask a simple question that is often impossible to answer: Which third-party applications have access to our corporate identities, and with what scopes?
+
+Focus on:
+
+- Tools authorised by engineering and product teams (OAuth sprawl often begins there)
+- High-privilege scopes (mail, files, directory)
+- Integrations that are no longer active or rarely used
+- Tools authorised with personal accounts that were later linked to corporate resources
+
+### 5.2 Treat AI Tools as Real Identities
+
+Every AI integration—whether a SaaS tool like Context.ai or a connection broker like Claude or Copilot via MCP—should be treated as an identity with real permissions.
+
+That means:
+
+- A clear owner and accountability
+- Regular access reviews
+- Audit logs and traceability
+- A "time-bounded" access model, not permanent authorisation
+
+### 5.3 Rethink the Standing Access Model
+
+StrongDM's proposed alternative deserves serious consideration: Just-in-Time access. OAuth authorisation exists only for an active, approved session. Even if the tool is compromised somewhere in the chain, the exploitable window shrinks from months to minutes.
+
+For AI tools, this means: rather than letting an agent inherit the full rights of its connected identity, each tool invocation is individually evaluated, scoped, and time-limited.
+
+### 5.4 Do Not Rely on "Sensitive / Non-Sensitive" Classification to Protect Secrets
+
+The Vercel lesson shows that asking humans to correctly label every secret is unreliable. A more resilient model is credential injection: secrets are injected by a gateway at connection time and do not exist after the session ends. There is nothing to steal because the credential never lands anywhere an attacker can reach.
+
+---
+
+## 6. Conclusion: Access Is the New Perimeter, Trust Is the New Vulnerability
+
+Tanium wrote in its analysis: "In identity-driven security incidents, the hardest part is often building confidence in what actually happened."
+
+What is most unsettling about the Vercel incident is not the attackers' technical skill, but the contrast between the legitimacy of the attack path and its invisibility. The entire path was authorised. It was "normal." It was what OAuth is designed to do. Yet almost no organisation can see that path, assess that path, or dismantle that path before an attacker uses it.
+
+As IAM professionals, our job is expanding from "managing user access to resources" to "managing trust relationships between identities." Because in a world of AI agents, SaaS integrations, and non-human identities everywhere:
+
+**Access is the new perimeter**
+
+**Identity is the control plane**
+
+**And unexamined trust is the greatest vulnerability**
+`
+  },
+  {
     id: "8",
     title: "The Rise of Non-Human Identities: Why Machines Are Outnumbering Humans 80:1 and What to Do About It",
     slug: "rise-of-non-human-identities-machines-outnumbering-humans",
