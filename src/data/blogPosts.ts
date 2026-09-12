@@ -197,7 +197,7 @@ The gap between 93% awareness and 13% deployment is not a knowledge gap. It's an
     title: "When OAuth Becomes a Backdoor: Three Lessons from the Vercel Breach for IAM Professionals",
     slug: "when-oauth-becomes-a-backdoor-three-lessons-from-the-vercel-breach-for-iam-professionals",
     date: "August 22, 2026",
-    category: "Authentication & Access",
+    category: "Security",
     excerpt: "In April 2026, Vercel confirmed a security incident: attackers gained access to a Vercel employee's Google Workspace account through an OAuth grant to a third-party AI tool called Context.ai, and from there moved laterally into Vercel's internal systems.",
     content: `
 # When OAuth Becomes a Backdoor: Three Lessons from the Vercel Breach for IAM Professionals
@@ -329,7 +329,7 @@ As IAM professionals, our job is expanding from "managing user access to resourc
     title: "The Rise of Non-Human Identities: Why Machines Are Outnumbering Humans 80:1 and What to Do About It",
     slug: "rise-of-non-human-identities-machines-outnumbering-humans",
     date: "August 8, 2026",
-    category: "Authentication & Access",
+    category: "AI & Future Tech",
     excerpt: "The definition of identity has expanded dramatically. Applications, containers, APIs, scripts, and service accounts now operate as independent identities alongside your employees, customers, and partners across cloud and hybrid environments. These non-human identities (NHIs) are deeply embedded in IT infrastructure. In many organisations, they outnumber human identities by a factor of 25 to 50. According to Palo Alto Networks' 2026 Identity Security Landscape report, the ratio stands at 109 machine identities for every human—up from 82-to-1 just a year earlier.",
     content: `
 # The Rise of Non-Human Identities: Why Machines Are Outnumbering Humans 80:1 and What to Do About It
@@ -548,7 +548,7 @@ Because the machines are not waiting.
     title: "Beyond the Microsoft Ecosystem: IAM Alternatives in a Dominant Market",
     slug: "beyond-microsoft-ecosystem-iam-alternatives",
     date: "July 25, 2026",
-    category: "Authentication & Access",
+    category: "Modern Identity",
     excerpt: "What if you want to look beyond Microsoft? Whether driven by concerns over vendor lock-in, data sovereignty, multi-cloud strategy, or simply a desire for greater flexibility, many organisations are exploring alternatives.",
     content: `
 # Beyond the Microsoft Ecosystem: IAM Alternatives in a Dominant Market
@@ -721,7 +721,7 @@ The key is to make an informed decision rather than defaulting to the platform t
     title: "Okta: The World’s Identity Company - An Overview and Why It Matters",
     slug: "okta-overview-why-it-matters",
     date: "July 10, 2026",
-    category: "Authentication & Access",
+    category: "Modern Identity",
     excerpt: "Okta is the world's identity company, providing a comprehensive identity and access management solution for enterprises.",
     content: `
 # This week, a look into Okta, and why it matters to the IAM community.
@@ -821,7 +821,7 @@ By adopting Okta, organizations can reduce their identity-related risk, improve 
     title: "The Hybrid Identity Attack Surface: Lessons from Storm-0501",
     slug: "storm-0501-hybrid-identity-attack-surface",
     date: "June 22, 2026",
-    category: "Authentication & Access",
+    category: "Security",
     excerpt: "The Storm-0501 campaign offers something far more valuable: a real-world, detailed case study of how sophisticated attackers exploit the seams between on-premises Active Directory and cloud identities.",
     content: `
 # After a short break: A look at the hybrid identity attack surface.
