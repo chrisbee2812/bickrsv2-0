@@ -104,11 +104,11 @@ export function SkillGrid() {
                     </div>
                   </span>
                 </div>
-                <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
+                <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
                     <div className="font-black uppercase">
-                      <a href="https://learn.kodekloud.com/learn/certificate/55484a3c-96ed-4414-89bf-a96c6c782c50" target="_blank" rel="noopener noreferrer">
-                        AZ-900 - Azure Fundamentals
+                      <a href="https://learn.kodekloud.com/learn/certificate/364a1515-7371-4bec-8125-8ddf07fca3f8" target="_blank" rel="noopener noreferrer">
+                        AZ-104 - Azure Administrator
                       </a>
                     </div>
                     <p className="text-slate-400 text-[10px]">
@@ -116,11 +116,11 @@ export function SkillGrid() {
                     </p>
                   </span>
                 </div>
-                <div key="AZ-104" className="mb-2 text-[12px] font-mono tracking-tighter">
+                <div key="AZ-900" className="mb-2 text-[12px] font-mono tracking-tighter">
                   <span className="text-slate-300 font-mono tracking-tighter">
                     <div className="font-black uppercase">
-                      <a href="https://learn.kodekloud.com/learn/certificate/364a1515-7371-4bec-8125-8ddf07fca3f8" target="_blank" rel="noopener noreferrer">
-                        AZ-104 - Azure Administrator
+                      <a href="https://learn.kodekloud.com/learn/certificate/55484a3c-96ed-4414-89bf-a96c6c782c50" target="_blank" rel="noopener noreferrer">
+                        AZ-900 - Azure Fundamentals
                       </a>
                     </div>
                     <p className="text-slate-400 text-[10px]">
