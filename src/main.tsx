@@ -5,7 +5,6 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import './index.css';
 import { ConsentBanner } from './components/ConsentBanner.tsx';
-import ConsentStatus from './components/consent-status.tsx';
 import { useConsent } from './hooks/useConsent.ts';
 
 function Root() {
@@ -18,7 +17,6 @@ function Root() {
       <ConsentBanner />
       {analyticsAllowed && <Analytics />}
       {analyticsAllowed && <SpeedInsights />}
-      <ConsentStatus />
     </StrictMode>
   );
 }
