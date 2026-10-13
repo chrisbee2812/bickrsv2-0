@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { IAMAssistant } from './components/IAMAssistant';
@@ -8,7 +8,8 @@ import SkillsPage from './pages/Skills';
 import BlogPage from './pages/Blog';
 import ContactPage from './pages/Contact';
 import BlogPostDetail from './pages/BlogPostDetail';
-import { Shield, Linkedin, Mail } from 'lucide-react';
+import CookiePolicyPage from './pages/CookiePolicy';
+import { Linkedin, Mail } from 'lucide-react';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -44,9 +45,19 @@ function Footer() {
           </div>
         </div>
         
-        <div className="mt-20 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-mono text-slate-600 uppercase tracking-[0.5em]">
+        <div className="mt-5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] font-mono text-slate-600 uppercase tracking-[0.5em]">
           <div>Protocol // IAM-CONSULTANT-V1</div>
-          <div>© 2026 IDENTITY FIRST. ALL RIGHTS RESERVED.</div>
+          <div>
+            <div className="text-center pb-5">
+              <a href="/CookiePolicy" className="text-gray-400 hover:text-white underline">
+                Cookie Policy
+              </a>
+              <p className="text-slate-600 text-[8px] tracking-widest mt-1">
+                Click the link to view our cookie policy and manage your consent preferences.
+              </p>
+            </div>
+            <div>© 2026 IDENTITY FIRST. ALL RIGHTS RESERVED.</div>
+          </div>
         </div>
       </div>
     </footer>
@@ -68,6 +79,7 @@ export default function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostDetail />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/CookiePolicy" element={<CookiePolicyPage />} />
           </Routes>
         </main>
 
