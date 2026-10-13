@@ -1,26 +1,26 @@
-// src/main.tsx
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import ReactGA from 'react-ga4';
 import App from './App.tsx';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import './index.css';
 import { ConsentBanner } from './components/ConsentBanner.tsx';
+import ConsentStatus from './components/consent-status.tsx';
+import { useConsent } from './hooks/useConsent.ts';
 
-const GA_ID = 'G-8HNVQE69CC';
-const saved = localStorage.getItem('cookie_consent');
+function Root() {
+  const consent = useConsent();
+  const analyticsAllowed = consent === 'accepted';
 
-if (saved === 'accepted') {
-  ReactGA.initialize(GA_ID);
-  window.gtag?.('consent', 'update', { analytics_storage: 'granted' });
+  return (
+    <StrictMode>
+      <App />
+      <ConsentBanner />
+      {analyticsAllowed && <Analytics />}
+      {analyticsAllowed && <SpeedInsights />}
+      <ConsentStatus />
+    </StrictMode>
+  );
 }
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-    <ConsentBanner />
-    <Analytics />
-    <SpeedInsights />
-  </StrictMode>,
-);
+createRoot(document.getElementById('root')!).render(<Root />);

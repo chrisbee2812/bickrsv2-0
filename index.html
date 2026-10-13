@@ -1,32 +1,38 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('consent', 'default', {
-    analytics_storage: 'denied',
-    ad_storage: 'denied',              // if you ever add ads
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    wait_for_update: 500               // gives your banner 500ms to fire an update
-  });
-  gtag('js', new Date());
-  gtag('config', 'G-8HNVQE69CC');
-</script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chris Bicknell - IAM Specialist</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <!-- Google tag (gtag.js)
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HNVQE69CC"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
+      // Safe default first
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 500
+      });
+
+      // Re-apply stored choice immediately (returning users)
+      try {
+        const saved = localStorage.getItem('cookie_consent');
+        if (saved === 'accepted' || saved === 'rejected') {
+          gtag('consent', 'update', {
+            analytics_storage: saved === 'accepted' ? 'granted' : 'denied'
+          });
+        }
+      } catch (_) { /* localStorage unavailable — stay denied */ }
+
+      // Now load GA, knowing the correct consent state
+      gtag('js', new Date());
       gtag('config', 'G-8HNVQE69CC');
-    </script> -->
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chris Bicknell - IAM Specialist</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   </head>
   <body>
     <div id="root"></div>
