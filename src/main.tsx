@@ -4,8 +4,8 @@ import App from './App.tsx';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import './index.css';
-import { ConsentBanner } from './components/ConsentBanner.tsx';
-import { useConsent } from './hooks/useConsent.ts';
+import { ConsentBanner } from './components/ConsentBanner';
+import { useConsent } from './hooks/useConsent';
 
 function Root() {
   const consent = useConsent();
