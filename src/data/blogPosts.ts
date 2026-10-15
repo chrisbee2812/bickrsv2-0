@@ -2,6 +2,212 @@ import { BlogPost } from "../types";
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "11",
+    title: "SailPoint Identity Security Cloud: Its Place in the Modern IAM Architecture",
+    slug: "sailpoint-identity-security-cloud-its-place-in-the-modern-iam-architecture",
+    date: "September 27, 2026",
+    category: "Governance & Administration",
+    excerpt: "At the centre of this evolution sits SailPoint Identity Security Cloud (ISC), a platform that has redefined how organisations approach identity governance and administration (IGA).",
+    content: `
+# SailPoint Identity Security Cloud: Its Place in the Modern IAM Architecture
+By an IAM consultant who's been governing access since before "cloud" meant anything.
+
+---
+
+## Introduction
+
+Today I'm taking a slightly different approach. Instead of a deep dive into a single technical topic, I want to explore the broader landscape of modern identity and access management (IAM) architecture. Specifically, I want to discuss where SailPoint Identity Security Cloud fits into that landscape.
+
+The identity and access management (IAM) landscape has undergone a fundamental transformation over the past decade. What was once a predominantly on-premises discipline focused on directory services and basic provisioning has evolved into a sophisticated, cloud-native ecosystem spanning human identities, machine accounts, and increasingly, AI agents. At the centre of this evolution sits SailPoint Identity Security Cloud (ISC), a platform that has redefined how organisations approach identity governance and administration (IGA).
+
+For IAM architects and security leaders, understanding where ISC fits within a broader IAM architecture is essential. It is not simply a replacement for legacy IdentityIQ deployments, nor is it a standalone tool that operates in isolation. ISC is a governance layer that sits above authentication and access control systems, consuming identity data from authoritative sources and providing the intelligence, automation, and control mechanisms that ensure the right identities have the right access to the right resources — and nothing more.
+
+This article examines ISC's architectural position, its core components, how it integrates with identity providers like Microsoft Entra ID, and why it represents a strategic shift toward what SailPoint calls "adaptive identity security." We will explore the technical foundations, the integration patterns that matter most in practice, and the governance capabilities that distinguish ISC from simpler access management solutions.
+
+---
+
+## The Architectural Foundation: SailPoint Atlas
+
+To understand ISC, one must first understand the platform upon which it is built. SailPoint Atlas is the unified, multi-tenant SaaS platform that serves as the foundation for all Identity Security Cloud offerings . This is not merely a marketing distinction — it has profound architectural implications.
+
+Atlas was designed from the ground up for internet-scale, cloud-native operation. Unlike legacy IGA platforms that were retrofitted for cloud deployment, Atlas was built with the assumption that identity data would span cloud platforms, SaaS applications, customer-hosted systems, and traditional data centre infrastructure . The platform provides the underlying services — connectivity, data processing, machine learning, event-driven orchestration — that power ISC's governance capabilities.
+
+### The Identity Cube
+
+A critical architectural element within Atlas is the Identity Cube, SailPoint's unified data model for representing every identity in the organisation . The Identity Cube provides a 360-degree view of each identity, consolidating attributes, entitlements, access rights, and risk scores into a single, queryable entity. This is not an optional module or an add-on; it is the core data structure that enables ISC's governance functions. When an identity is created, correlated, or modified, the Identity Cube reflects that change, and all downstream governance processes — certifications, role mining, risk analysis — operate against this unified model.
+
+The Identity Cube's extensibility is significant. Organisations can add custom attributes relevant to their specific governance requirements, and these attributes become available for policy evaluation, certification decisions, and reporting . This flexibility is essential for organisations with complex regulatory obligations or industry-specific access models.
+
+---
+
+## Core Components: How ISC Operates
+
+Identity Security Cloud is not a monolithic application. It comprises several distinct components that work together to deliver governance across diverse environments.
+
+### The Cloud Tenant
+
+The ISC cloud tenant is the central control plane. This is where administrators configure sources, define identity profiles, build access models, run certifications, and manage the platform's overall behaviour . The tenant is multi-tenant SaaS — SailPoint manages the infrastructure, patching, and scaling, while customers configure their governance policies within their isolated instance.
+
+From a security perspective, the tenant includes several critical configuration areas. Strong authentication (MFA) can be enforced for administrative access, ensuring that even if credentials are compromised, attackers cannot easily gain control of the governance platform itself . Sign-in policies control session duration and idle timeouts, while IP restrictions can limit access to trusted networks or geographies .
+
+#### Emergency Access Administrators
+
+Emergency access administrators are a particularly important element of tenant security . These accounts can bypass SSO and sign in directly to the tenant, ensuring that administrators retain access even if the identity provider is unavailable. Organisations should carefully manage these accounts, ensuring they are protected with strong credentials and monitored for anomalous activity.
+
+### Virtual Appliances and Connectivity
+
+While ISC is a cloud service, most organisations have on-premises or private cloud systems that must be integrated into the governance programme. This is where Virtual Appliances (VAs) come into play.
+
+A Virtual Appliance is a Linux-based component (running on FlatCar OS) that is hosted within the customer's environment . VAs perform all outbound communication between the ISC tenant and target systems — they poll the tenant's queue for work items and push results back, never requiring inbound connections from the cloud to the customer network . This architecture is fundamental to ISC's security model: the customer's perimeter remains intact, and no inbound firewall exceptions are required.
+
+For high availability, SailPoint recommends deploying a cluster of at least two VAs . This ensures that if one appliance fails, the other can continue processing aggregation and provisioning tasks. The cluster operates as a single logical entity from the ISC tenant's perspective, with work distributed across available appliances.
+
+Virtual Appliances are not required for all sources. SaaS connectors can connect directly to cloud applications without a VA, using APIs or SCIM endpoints . This distinction matters for architecture design: organisations should use SaaS connectors where possible to reduce on-premises infrastructure footprint, reserving VAs for systems that genuinely require local connectivity.
+
+### Sources and Identity Profiles
+
+In ISC, a source represents a connection to a system that contains identity or account data . Sources can be connected via direct connectors (using VAs or SaaS connectors) or via flat file feeds for systems that cannot be integrated in real time.
+
+The most important architectural decision in an ISC deployment is the selection of authoritative sources. These are the sources that define the organisation's identity population — typically HR systems such as Workday, SuccessFactors, or BambooHR. When an authoritative source is configured, ISC creates identity profiles that transform raw account data into governed identities. All other sources are then correlated to these identities, creating a unified view of each person's access across the enterprise.
+
+The order of operations matters here. Best practice is to configure authoritative sources first, establish identity profiles, and only then connect downstream applications and directories . This ensures that when accounts are aggregated from non-authoritative sources, they can be immediately correlated to existing identities rather than creating orphaned or duplicate records.
+
+---
+
+## ISC's Position in the IAM Architecture Stack
+
+To understand ISC's architectural role, it is helpful to think in terms of layers. A typical enterprise IAM architecture comprises several distinct but interconnected layers:
+
+**The Directory Layer** includes systems like Microsoft Entra ID (formerly Azure AD), on-premises Active Directory, and LDAP directories. These are the systems that authenticate users and store core identity attributes.
+
+**The Access Management Layer** encompasses SSO, MFA, Conditional Access, and federation services. This is where authentication policies are enforced and session security is managed.
+
+**The Governance Layer** is where ISC operates. This layer consumes identity data from directories and applications, applies governance policies, automates lifecycle processes, and provides the audit and certification capabilities required for compliance.
+
+**The Privileged Access Layer** manages elevated accounts and just-in-time access for administrative users.
+
+**The Data Security Layer** governs access to sensitive data stores, applying classification and protection policies.
+
+ISC's position in this stack is deliberate. It is not an authentication system — it does not replace Entra ID or Okta for sign-in. It is not a directory — it does not store the authoritative source of user attributes. Instead, ISC is the governance brain that sits above these systems, ensuring that access is granted appropriately, reviewed regularly, and revoked promptly when no longer needed.
+
+This architectural positioning has important implications. ISC must integrate with directories and access management systems to be effective — it consumes identity data from them and can trigger provisioning actions within them. But it also operates independently of any single vendor's ecosystem, providing cross-platform governance that spans cloud, hybrid, and on-premises environments.
+
+---
+
+## Integration with Microsoft Entra ID: A Common Architecture Pattern
+
+For organisations using Microsoft's identity platform, the integration between ISC and Entra ID is a particularly important architectural consideration. This is not merely a technical integration — it represents a division of responsibilities between two complementary systems.
+
+### Authentication vs. Governance
+
+Entra ID provides authentication, Conditional Access, MFA, and identity protection. It is the system that validates credentials, evaluates sign-in risk, and enforces session policies. ISC provides governance — it determines what access a user should have, provisions that access into downstream systems, and reviews whether the access remains appropriate over time.
+
+This division is deliberate and beneficial. Entra ID is optimised for real-time authentication decisions at scale. ISC is optimised for governance workflows that may span days or weeks — access requests, approvals, certifications, role mining. Attempting to do governance in Entra ID (through its native Identity Governance features) is possible for simpler use cases, but ISC provides deeper capability for complex environments.
+
+### Configuration for SSO and Provisioning
+
+The integration begins with configuring ISC as an enterprise application in Entra ID for SSO purposes . This allows administrators to control who can access the ISC tenant through Entra ID's access controls, and enables users to sign in to ISC using their Microsoft credentials.
+
+The configuration involves adding SailPoint Identity Security Cloud from the Entra ID gallery and configuring SAML-based SSO . The identifier and reply URLs follow SailPoint's standard format, with the tenant name substituted appropriately. Once configured, Entra ID becomes the identity provider for ISC access, meaning that MFA policies, Conditional Access rules, and sign-in risk evaluations apply to ISC administrative access as they would to any other enterprise application.
+
+### Provisioning Integration
+
+Beyond SSO, the more significant integration is provisioning. ISC can act as a provisioning source for Entra ID, creating and managing user accounts based on governance decisions . This is typically implemented through the SCIM 2.0 standard, which provides a standardised interface for user lifecycle operations.
+
+The architectural pattern is as follows: ISC aggregates identity data from authoritative sources (HR systems), correlates accounts across systems, and when a joiner-mover-leaver event occurs, ISC provisions the appropriate changes into Entra ID via SCIM. Entra ID then propagates those changes to downstream Microsoft 365 services and any other applications that rely on Entra ID as their identity source.
+
+This pattern ensures that Entra ID remains the authentication authority while ISC remains the governance authority — each system doing what it does best.
+
+### Microsoft Graph and SCIM Integration
+
+For organisations with complex hybrid environments, the integration between ISC and Microsoft Graph is increasingly important. Microsoft Graph provides programmatic access to Entra ID data, and ISC can leverage Graph APIs to enrich its identity data, detect anomalies, or perform targeted remediation.
+
+In practice, this integration enables scenarios such as: detecting users who have Entra ID accounts but are not present in the authoritative HR source (suggesting orphaned accounts), identifying excessive privileged role assignments that should be reviewed, or correlating sign-in activity data from Entra ID with governance data in ISC to identify risky access patterns.
+
+---
+
+## The Adaptive Identity Security Vision
+
+SailPoint has articulated a vision for what it calls "adaptive identity security" , and ISC is the vehicle through which this vision is delivered . Understanding this vision is essential for architects planning long-term identity strategies.
+
+The core premise is that traditional identity governance — periodic access reviews, manual certifications, static role assignments — cannot keep pace with modern IT environments. Cloud adoption, AI proliferation, and the explosion of non-human identities have made the old model insufficient . What is needed is continuous, automated, real-time governance that detects and responds to risk as it emerges, rather than weeks or months later.
+
+### The Four Pillars of Adaptive Identity Security
+
+SailPoint's adaptive identity framework rests on four pillars :
+
+**Real-Time Governance**: Moving from scheduled reviews to continuous monitoring and automated remediation. Instead of certifying access quarterly, ISC continuously evaluates whether access is appropriate based on policy, risk signals, and usage patterns. When an anomaly is detected, remediation can be triggered automatically.
+**Protection for AI and Machine Identities**: Extending governance beyond human users to service accounts, API keys, bots, and AI agents. SailPoint has introduced connectors for governing AI agents from platforms including Microsoft 365 Copilot, Salesforce Agentforce, and ServiceNow AI Platform . This recognises that non-human identities now outnumber human ones in many organisations and carry significant risk if ungoverned.
+**Universal and Dynamic Privilege Management**: Reducing standing privileged access in favour of just-in-time elevation. Instead of users holding administrative rights permanently, ISC can grant temporary access when needed, monitor its use, and revoke it automatically. This aligns with Zero Trust principles and reduces the blast radius of compromised accounts.
+**Integrated Threat Management**: Connecting identity governance with security operations. By integrating with SIEM and EDR platforms, ISC can correlate identity context with threat signals, enabling faster detection and response to identity-based attacks.
+
+---
+
+## Practical Architecture Considerations
+
+For architects designing or evolving ISC deployments, several practical considerations merit attention.
+
+### Source Prioritisation and Identity Correlation
+
+The quality of ISC's governance output depends entirely on the quality of its identity data. If identity correlation is poor — if accounts from different sources are not correctly linked to the same identity — governance decisions will be unreliable.
+
+The architectural principle is to establish a clear hierarchy of sources, with authoritative sources at the top. Identity profiles should be carefully configured to ensure that correlation rules correctly match accounts to identities . This often requires collaboration between IAM teams and HR or IT operations teams to ensure that the attributes used for correlation (employee ID, email address, username patterns) are consistent across systems.
+
+### Governance Groups and Delegation
+
+ISC supports the concept of governance groups — collections of users who can perform administrative or review functions for specific sources or access models . This enables delegated administration, where business unit owners can manage access for their teams without requiring central IAM team involvement for every change.
+
+From an architectural perspective, governance groups should be designed to align with organisational structure. A source representing a finance application might be governed by a finance governance group, while a source representing engineering tools might be governed by an engineering governance group. This distributes the governance workload and ensures that reviews are performed by people with the context to make informed decisions.
+
+### Provisioning Enablement
+
+By default, new sources in ISC are read-only . This is a deliberate safety measure: aggregation and visibility come first, and provisioning capabilities must be explicitly enabled. Architects should consider which sources genuinely require provisioning (the ability to create, modify, or delete accounts) versus which can remain read-only.
+
+Enabling provisioning on a source requires careful consideration of the connector's capabilities, the target system's API limitations, and the governance workflows that will trigger provisioning actions. Testing in a non-production environment is essential before enabling provisioning in production.
+
+### The Role of IQService
+
+For Active Directory integration, ISC requires the IQService component for provisioning actions . IQService is a Windows service that runs in the customer's environment and acts as a bridge between the virtual appliance and Active Directory. Without IQService, ISC can aggregate data from AD (read-only) but cannot perform provisioning operations.
+
+SailPoint has recently strengthened IQService security, requiring TLS configuration and explicit enablement of privileged services such as ScriptExecutor and gMSAPasswordData . Architects should ensure that IQService instances are upgraded to the latest version and that TLS is properly configured to avoid service interruptions.
+
+---
+
+## ISC and the Broader IAM Ecosystem
+
+ISC does not operate in isolation. It is part of a broader IAM ecosystem that includes directories, access management platforms, privileged access management (PAM) tools, and data security solutions.
+
+### Integration with PAM
+
+While ISC governs access to applications and systems, PAM solutions like CyberArk or BeyondTrust govern privileged credentials and sessions. The boundary between these systems is an architectural consideration: ISC can govern who should have privileged access (through access requests, certifications, and role definitions), while PAM enforces the actual credential management and session controls.
+
+Increasingly, these systems integrate — ISC can trigger PAM workflows for just-in-time privilege elevation, and PAM systems can feed session data back to ISC for risk analysis.
+
+### Integration with Data Security
+
+SailPoint's Data Access Security offering extends governance to unstructured data, integrating with ISC's Identity Graph to visualise data access pathways and identify sensitive data exposure. This is particularly relevant for organisations subject to data protection regulations, where understanding who has access to sensitive documents and files is a compliance requirement.
+
+### The Market Context
+
+The IAM market is growing rapidly, driven by cloud adoption, regulatory requirements, and the proliferation of non-human identities. The identity and access management market was valued at approximately $21.8 billion in 2025 and is projected to reach $45.2 billion by 2030, representing a compound annual growth rate of 15.7%. Within this market, identity governance and administration is a significant and growing segment, and non-human identity management is the fastest-growing technology segment at 22.28% CAGR.
+
+ISC's positioning aligns with these market trends. Its cloud-native architecture, support for non-human identities, and AI-driven governance capabilities address the evolving needs of enterprises that are migrating to cloud, adopting AI, and facing increasingly sophisticated identity-based threats.
+
+---
+
+## Conclusion
+
+SailPoint Identity Security Cloud represents a fundamental shift in how identity governance is architected and delivered. It is not merely a cloud version of IdentityIQ, nor is it a simple access management tool. ISC is a governance platform built on the Atlas multi-tenant SaaS foundation, designed to provide continuous, intelligent governance across cloud, hybrid, and on-premises environments.
+
+Its architectural position is clear: ISC sits above authentication and access control systems, consuming identity data from directories and applications, applying governance policies, and automating lifecycle processes. It integrates with Microsoft Entra ID for SSO and provisioning, while maintaining a clear separation of responsibilities — Entra ID authenticates, ISC governs.
+
+For IAM architects, the key considerations are: establishing high-quality authoritative sources and identity correlation, designing governance groups that align with organisational structure, carefully enabling provisioning only where appropriate, and planning for integration with PAM and data security systems. The investment in ISC is an investment in a governance layer that will become more valuable as identity estates grow more complex and non-human identities proliferate.
+
+The shift toward adaptive identity security — real-time governance, protection for AI and machine identities, dynamic privilege management, and integrated threat management — signals SailPoint's direction and the direction of the IAM market more broadly. Organisations that architect their identity programmes around these principles will be better positioned to secure their environments, demonstrate compliance, and adapt to whatever the next evolution of identity technology brings.
+
+`
+  },
+  {
     id: "10",
     title: "The Phishing-Resistant MFA Gap: Why We Know Better But Still Aren't Doing It",
     slug: "the-phishing-resistant-mfa-gap-why-we-know-better-but-still-arent-doing-it",
