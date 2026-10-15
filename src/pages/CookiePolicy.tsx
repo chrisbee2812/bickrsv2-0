@@ -8,18 +8,18 @@ export default function CookiePolicyPage() {
             <h1 className="text-4xl font-black text-white uppercase italic">Cookie Policy</h1>
             <p className="text-slate-400 max-w-2xl leading-relaxed">Last updated: 13 October 2026</p>
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">1. Introduction</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">1. Introduction</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               This Cookie Policy explains how my website, bickrs.com (&quot;I&quot;, &quot;me&quot;, or &quot;my&quot;), uses cookies and similar technologies. 
               I am committed to protecting your privacy and ensuring you have an informed choice about your cookie preferences. 
               This policy complies with the UK General Data Protection Regulation (UK GDPR) and the Privacy and Electronic Communications Regulations (PECR).
             </p>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">2. What are cookies?</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">2. What are cookies?</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               Cookies are small text files stored on your device (computer, tablet, or mobile) when you visit a website. 
               They are widely used to make websites work more efficiently, enhance user experience, and provide information to site owners.
             </p>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">3. How I use cookies</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">3. How I use cookies</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               I use only one category of cookies: <strong>analytics cookies</strong> via Google Analytics. These help me understand how visitors interact with my website, 
               allowing me to improve content and user experience. I do not use any marketing, advertising, or social media cookies.
@@ -36,7 +36,7 @@ export default function CookiePolicyPage() {
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               This data is aggregated and anonymised; it does not identify you personally. I use it solely for statistical analysis.
             </p>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">4. Cookies I use</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">4. Cookies I use</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               The following Google Analytics cookies may be set if you consent:
             </p>
@@ -84,7 +84,7 @@ export default function CookiePolicyPage() {
                 Google&apos;s official documentation
               </a>.
             </p>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">5. Your consent</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">5. Your consent</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               Under UK law, I must obtain your consent before setting any non‑essential cookies. When you first visit our website, a banner appears asking you to accept or decline analytics cookies. 
               Your choice is stored and respected for future visits.
@@ -99,7 +99,7 @@ export default function CookiePolicyPage() {
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               My consent mechanism uses Google Consent Mode, which signals your choice to Google and ensures that no tracking occurs until you have consented.
             </p>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">6. Managing cookies in your browser</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">6. Managing cookies in your browser</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               You can also control cookies through your browser settings. Most browsers allow you to:
             </p>
@@ -129,7 +129,7 @@ export default function CookiePolicyPage() {
                 <a href="https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Edge</a>
               </li>
             </ul>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">7. Data transfers</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">7. Data transfers</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               Google Analytics is operated by Google LLC, which may process your personal data (e.g., anonymised IP address) in the United States. 
               The UK has adequacy regulations for certain countries; however, the US is not currently covered. Google relies on 
@@ -137,7 +137,7 @@ export default function CookiePolicyPage() {
               approved by the European Commission and adopted for the UK to ensure an adequate level of data protection. 
               By consenting to analytics cookies, you acknowledge that your data may be transferred to and processed in the US under these safeguards.
             </p>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">8. Your rights</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">8. Your rights</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               Under UK GDPR, you have the right to:
             </p>
@@ -151,7 +151,7 @@ export default function CookiePolicyPage() {
               Since I only collect anonymised data through Google Analytics, it is not possible to identify you or fulfil individual rights requests based on that data. 
               However, if you have any concerns, please contact me using the details below.
             </p>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">9. Contact me</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">9. Contact me</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               If you have any questions about this Cookie Policy or our data practices, please contact me at:
             </p>
@@ -159,7 +159,7 @@ export default function CookiePolicyPage() {
               <a href="https://www.bickrs.com/contact" className="text-blue-600 underline">www.bickrs.com</a><br />
               Email: <a href="mailto:chris@bickrs.com" className="text-blue-600 underline">chris@bickrs.com</a><br />
             </address>
-            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic">10. Changes to this policy</h2>
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter italic pt-4">10. Changes to this policy</h2>
             <p className="text-slate-400 max-w-2xl leading-relaxed">
               I may update this Cookie Policy from time to time to reflect changes in my practices or legal requirements. 
               The &quot;Last updated&quot; date at the top of this page will indicate when it was last revised. 
