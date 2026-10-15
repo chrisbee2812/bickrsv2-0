@@ -3,15 +3,24 @@ import { Experience } from "../types";
 export const experiences: Experience[] = [
   {
     id: "1",
-    title: "Independent IAM Consultant & Architect (Training, Advisory, and Implementation)",
-    company: "Focus: Enterprise Identity",
-    period: "2023 - Present",
-    description: "Intensive focus on modern IAM methodologies, Zero Trust frameworks, and Entra ID ecosystems. Leveraging 30 years of infrastructure expertise to solve complex identity governance and access security challenges.",
-    technologies: ["Entra ID", "Identity Governance", "Conditional Access", "PIM", "B2B/B2C"],
+    title: "IAM Technical Specialist (M&A Systems Migration)",
+    company: "Dentsu International",
+    period: "2025 - 2026",
+    description: "Contract role (6 months, extended by 3 months) focused on migrating two acquired companies into Dentsu's central Entra ID tenant. Consolidated disparate identity systems into a unified cloud-only environment, aligning acquired entities with Dentsu's Zero Trust security posture.",
+    technologies: ["Entra ID", "SailPoint ISC", "Conditional Access", "MFA", "PowerShell", "Microsoft Graph"],
     type: 'IAM'
   },
   {
     id: "2",
+    title: "Independent IAM Consultant & Architect (Training, Advisory, and Implementation)",
+    company: "Focus: Enterprise Identity",
+    period: "2023 - Present",
+    description: "Intensive focus on modern IAM methodologies, Zero Trust frameworks, and Entra ID ecosystems. Leveraging 30 years of infrastructure expertise to solve complex identity governance and access security challenges.",
+    technologies: ["Entra ID", "SailPoint IdentityNow", "Identity Governance", "Conditional Access", "PIM", "B2B/B2C"],
+    type: 'IAM'
+  },
+  {
+    id: "3",
     title: "EUC Technical Specialist & Identity Architect",
     company: "Vitality Health & Life Insurance - Full-time",
     period: "2019 - 2023",
@@ -20,7 +29,7 @@ export const experiences: Experience[] = [
     type: 'Hybrid'
   },
   {
-    id: "3",
+    id: "4",
     title: "Active Directory Specialist",
     company: "DXC - Contract",
     period: "2018 - 2019",
@@ -29,7 +38,7 @@ export const experiences: Experience[] = [
     type: 'Microsoft Legacy'
   },
   {
-    id: "4",
+    id: "5",
     title: "Infrastructure Specialist",
     company: "Cobham - Contract",
     period: "2017 - 2018",
@@ -38,7 +47,7 @@ export const experiences: Experience[] = [
     type: 'Hybrid'
   },
   {
-    id: "5",
+    id: "6",
     title: "Active Directory Consultant",
     company: "Microsoft - Contract",
     period: "2016 - 2017",
@@ -47,7 +56,7 @@ export const experiences: Experience[] = [
     type: 'Hybrid'
   },
   {
-    id: "6",
+    id: "7",
     title: "Various Directory Services and Messaging Consultant",
     company: "Various Clients - Contract and Full-time",
     period: "1993 - 2016",
