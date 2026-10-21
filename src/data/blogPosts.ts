@@ -2,6 +2,221 @@ import { BlogPost } from "../types";
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "12",
+    title: "Shadow IT and Unsanctioned Apps: The IAM Blind Spot That's Costing You More Than You Think",
+    slug: "shadow-it-and-unsanctioned-apps-the-iam-blind-spot-thats-costing-you-more-than-you-think",
+    date: "October 11, 2026",
+    category: "Governance & Administration",
+    excerpt: "At the centre of this evolution sits SailPoint Identity Security Cloud (ISC), a platform that has redefined how organisations approach identity governance and administration (IGA).",
+    content: `
+# Shadow IT and Unsanctioned Apps: The IAM Blind Spot That's Costing You More Than You Think
+By an IAM consultant who's been governing access since before "cloud" meant anything.
+
+---
+
+## Introduction
+
+Shadow IT has a reputation problem. Most security and IAM professionals still treat it as a governance failure — a sign that someone, somewhere, broke the rules. But the data tells a different story. Shadow IT is rarely malicious; it is almost always a symptom of a gap between what the business needs and what sanctioned IT can deliver at the speed the business demands. The real IAM challenge is that this gap creates identities, data flows, and access paths that your governance framework was never designed to see, let alone control.
+
+This article explores shadow IT and unsanctioned apps from an IAM perspective. We'll look at what the industry data actually says about the scale and cost of the problem, why traditional IAM controls fail to catch it, and what a more realistic — and more effective — approach looks like. The core argument is simple: you cannot govern what you cannot see, and the fastest way to make shadow IT visible is not to ban it but to compete with it, then bring its identities and data flows into a unified control plane.
+
+---
+
+## What We Mean by Shadow IT and Unsanctioned Apps
+
+Shadow IT is any technology, service, or application used within an organization that has not been explicitly approved, provisioned, or managed by the central IT or security function. In practice, this spans an enormous range:
+
+- **SaaS subscriptions** purchased by individual teams or departments on personal or departmental credit cards — project management tools, note-taking apps, file-sharing services, marketing automation platforms.
+
+- **Cloud infrastructure** spun up outside the corporate account structure — an AWS or Azure environment created by a developer for a proof of concept that quietly becomes production.
+
+- **AI tools and models** consumer-grade generative AI services used to summarize documents, draft content, or analyze data, often with sensitive information pasted directly into a third-party interface.
+
+- **No-code and low-code platforms** where business users build their own workflows, connectors, and data pipelines.
+
+- **Developer tooling and integrations** API keys generated outside your credential management system, scripts running with personal tokens, OAuth apps authorized by employees without review.
+
+From an IAM standpoint, each of these creates three distinct problems. First, identities — service accounts, API keys, OAuth grants, and user accounts — that exist outside your directory and your governance processes. Second, access paths — connections between your sanctioned systems and unsanctioned ones — that you have not authorized and cannot monitor. Third, data flows — sensitive data moving into environments with weaker controls, unknown retention policies, and unclear jurisdictional boundaries.
+
+The unsanctioned app is the delivery mechanism; the shadow identity and the shadow data flow are the IAM consequences. That distinction matters because most organizations focus on detecting the app and stop there, without addressing the identity sprawl and data exposure the app creates.
+
+---
+
+## The Scale of the Problem: What the Data Says
+
+It is tempting to treat shadow IT as a fringe issue. The numbers do not support that view.
+
+A widely cited Gartner finding, referenced in CIO.com's analysis of enterprise shadow IT, puts shadow IT at 30 to 40 percent of IT spending in large enterprises. Everest Group's research, cited in the same piece, finds it comprises 50 percent or more. The author of that analysis goes further, arguing that even these figures understate the ecosystem because they measure spending that can be identified, while a significant portion of shadow IT — personal subscriptions, free-tier services, embedded tooling — never surfaces in any financial system at all.
+
+That was written in 2017, and the trajectory since then has only accelerated. The barriers to procuring technology have collapsed. A team lead can sign up for a SaaS platform in minutes with a corporate card and no procurement review. A developer can provision cloud infrastructure with a personal account and a credit card. An employee can open a consumer generative AI tool and start pasting in documents without any interaction with IT whatsoever.
+
+The IBM Cost of a Data Breach Report 2024, summarized in IBM's analysis of shadow data and shadow AI, provides the most current evidence of what this means for security outcomes. The findings are stark:
+
+- **35 percent of breaches** involved data stored in unmanaged data sources — what IBM calls "shadow data."
+
+- Breaches involving shadow data **took 26.2 percent longer to identify and 20.2 percent longer to contain**, averaging 291 days.
+
+- The average cost of a breach involving shadow data was **USD 5.27 million**.
+
+- **40 percent of breaches** involved data stored across multiple types of environments, with public cloud environments incurring the highest average breach cost at **USD 5.17 million**.
+
+- Attackers were able to access more sensitive data, leading to a **26.5 percent rise in IP theft**, with lost IP costing **USD 173 per record** in 2024, up from USD 156 in 2023.
+
+Two details deserve particular attention from an IAM perspective. The first is the **291-day figure**. That is not primarily a detection-technology problem; it is an identity and access visibility problem. If you cannot enumerate the identities that have access to a data store, and cannot trace which credentials were used to reach it, you cannot scope an investigation. The breach persists because the access paths are invisible.
+
+The second is IBM's finding on AI. The report notes that a recent executive survey found **only 24 percent of new generative AI initiatives include a security component**. Combine that with the shadow data statistic and you have a compounding risk: sensitive data flowing into unsanctioned AI models, through identities that are not governed, with no security review at any stage of the pipeline.
+
+The picture that emerges is not one of isolated policy violations. It is one of a parallel technology estate — with its own identities, its own data flows, and its own (generally weaker) security posture — running alongside the sanctioned estate, largely invisible to the teams responsible for governing access.
+
+---
+
+## Why Traditional IAM Controls Miss Shadow IT
+
+Most IAM programs are built around a set of assumptions that shadow IT violates directly. Understanding those assumptions is the first step toward closing the gap.
+
+**Assumption one: identities are provisioned through the directory**. Your joiner-mover-leaver process, your role-based access control, your access reviews — all of these operate on identities that exist in your identity provider. Shadow IT creates identities outside that boundary: local accounts in SaaS tools, API keys generated in developer consoles, OAuth grants issued to third-party applications, service accounts created by business teams in their own cloud subscriptions. These identities never appear in an access review because they were never in scope.
+
+**Assumption two: access flows through sanctioned channels**. Your conditional access policies, your session controls, your data loss prevention rules — these are enforced at the gateway, the identity provider, or the sanctioned application. When an employee authorizes a third-party OAuth app to read their mailbox, or when a team builds a connector between a sanctioned CRM and an unsanctioned analytics platform using a personal API token, the traffic does not traverse your controlled channels. It goes directly from the sanctioned system's API to the unsanctioned one, authenticated by a credential you did not issue and cannot revoke through your normal processes.
+
+**Assumption three: you know where your data lives**. Data classification, retention policies, and protection controls all depend on knowing which data stores exist and who can reach them. IBM's finding that 35 percent of breaches involve unmanaged data sources is a direct measure of how badly this assumption fails in practice. The data is in a team's SaaS tool, a developer's cloud storage bucket, a consumer AI service's training pipeline — none of which appear in your data inventory.
+
+**Assumption four: procurement is the control point**. Many organizations still treat the procurement process as the primary gate for technology adoption. But the entire economics of SaaS and cloud have bypassed procurement. The Gartner and Everest Group figures on shadow IT spending are, in effect, a measure of how much technology enters the organization without passing through that gate.
+
+The consequence is that IAM teams are governing a shrinking fraction of the actual identity and access estate. The sanctioned estate is well-governed; the unsanctioned estate is not governed at all. And the unsanctioned estate is growing faster than the sanctioned one, because it has no friction.
+
+---
+
+## The IAM Risks That Shadow IT Creates
+
+It is worth being precise about the specific risks, because "shadow IT is risky" is too vague to drive remediation. From an identity and access perspective, the risks fall into five categories.
+
+### 1. Identity Sprawl and Orphaned Credentials
+
+Every unsanctioned SaaS subscription, cloud account, and API integration creates identities. When the employee who created them leaves, or moves to a different team, those identities frequently persist. There is no leaver process for an account that was never in the directory. The result is a growing population of credentials — API keys, service accounts, OAuth tokens — with no clear owner, no rotation schedule, and no revocation path.
+
+This is the IAM equivalent of technical debt, and like technical debt it compounds. Each orphaned credential is a potential entry point that bypasses every control you have built around your sanctioned identity lifecycle.
+
+### 2. Unmonitored Access Paths Between Sanctioned and Unsanctioned Systems
+
+The most dangerous shadow IT is not the standalone tool; it is the integration. When a team connects a sanctioned system to an unsanctioned one — exporting CRM data to a third-party analytics platform, syncing HR records to a project management tool, feeding financial data into a consumer AI model — they create a persistent access path authenticated by a credential that sits outside your governance.
+
+These paths are difficult to discover because they are legitimate API calls from a legitimate system. They look like normal traffic. The only anomaly is the destination, and if you are not monitoring egress to unsanctioned destinations, you will not see them.
+
+### 3. Data Exposure Through Unsanctioned AI
+
+IBM's analysis is explicit about the AI dimension: unsanctioned data, models, and AI use "can be invisible to the IT and security teams, which can result in impactful incidents down the line." The specific IAM risk is that AI tools require data to function. Employees paste documents, upload datasets, and connect data sources to consumer AI services that may retain, train on, or expose that data.
+
+The healthcare example in IBM's report — chest X-ray images sent to a cloud model unencrypted, intercepted by an attacker, and used for extortion — is a data protection failure, but its root cause is an access governance failure. No one authorized that data flow, no one classified the data before it left the controlled environment, and no one had visibility into the identity that moved it.
+
+### 4. Blast Radius Expansion Through Credential Reuse
+
+Shadow IT frequently involves credential reuse — the same password across personal and corporate accounts, the same API key embedded in multiple scripts, the same OAuth grant shared across a team. When any one of those services is breached, the reused credential provides a foothold into the others.
+
+This is a well-understood risk in the consumer context, but it is underappreciated in the enterprise context because the reused credentials are often not corporate credentials at all. They are personal credentials that happen to have access to corporate systems through an unsanctioned integration. Revoking them requires knowing they exist.
+
+### 5. Compliance and Regulatory Exposure
+
+IBM notes that breaches involving shadow data highlight "data governance gaps, data privacy issues, and impending regulatory impact." From an IAM perspective, the compliance problem is that access to regulated data cannot be demonstrated to be authorized, least-privilege, or reviewed. If a regulator asks who had access to a particular dataset, and that dataset was copied into an unsanctioned tool, the honest answer is that you do not know.
+
+The 291-day average time to contain a shadow-data breach is, in part, a measure of how long it takes to reconstruct an access picture that should have been available from the start.
+
+---
+
+## The Root Cause: Speed and Alignment, Not Malice
+
+The CIO.com analysis makes an argument that IAM teams would do well to internalize: shadow IT exists because enterprise IT does not serve business needs well enough. The IT group is "too slow or not responsive for the appetite of business users, too costly and doesn't align well with the business needs." Business users build their own capabilities because the sanctioned path cannot deliver at the speed the business requires.
+
+This framing matters because it changes the remediation strategy. If shadow IT were a compliance problem, the answer would be tighter policy and better detection. If shadow IT is a service-delivery problem, the answer is to improve the sanctioned service so that it out-competes the unsanctioned alternative. The CIO.com piece recommends exactly that: establish DevOps cross-functional teams aligned to business needs, with a cloud stack, a SaaS stack, and an automated test environment, delivering functionality at the speed of business. The goal is to "out-compete shadow IT for speed and alignment."
+
+For IAM, the implication is that friction is not a control. Making it harder to adopt unsanctioned technology does not reduce shadow IT; it just pushes it further out of sight. The organizations that have made progress are the ones that reduced the friction of the sanctioned path — faster access provisioning, self-service for low-risk tools, pre-approved catalogs of SaaS and AI services — while simultaneously improving visibility into what is actually being used.
+
+---
+
+## A Realistic IAM Approach to Shadow IT
+
+No organization will eliminate shadow IT entirely. The goal is to shrink the ungoverned portion of the estate and bring as much of it as possible under IAM control. That requires a different approach at each stage.
+
+### Step 1: Discover — You Cannot Govern What You Cannot See
+
+Discovery is the foundation, and it has to operate on multiple planes simultaneously:
+
+- **Financial discovery**: Analyze expense reports, corporate card transactions, and procurement records for SaaS and cloud spending that did not go through IT. This catches paid shadow IT but misses free-tier and personal-account usage.
+
+- **Network and egress discovery**: Monitor outbound traffic to unsanctioned SaaS and cloud destinations. This catches usage regardless of payment method but requires the traffic to traverse a monitored point.
+
+- **Identity and OAuth discovery**: Audit OAuth grants, API keys, and service accounts in your sanctioned systems for connections to unsanctioned applications. This is the most IAM-native discovery method and frequently the most revealing, because it surfaces the integration paths that carry data.
+
+- **Data discovery**: Use data security posture management (DSPM) — which IBM explicitly recommends — to identify sensitive data across cloud environments and services, including stores you did not know existed.
+
+The output of discovery should be an inventory: which unsanctioned apps are in use, by whom, with what data, and through which identities. That inventory is the input to every subsequent step.
+
+### Step 2: Classify and Prioritize by Data Sensitivity and Access Breadth
+
+Not all shadow IT is equal. A team using an unsanctioned note-taking app for meeting minutes is a different risk from a team feeding customer records into a consumer AI model. Prioritize based on two dimensions:
+
+- **Data sensitivity**: What data does the unsanctioned app touch? Does it receive regulated, confidential, or IP data?
+
+- **Access breadth**: How many identities and systems does it connect to? Does it hold persistent credentials with broad scope?
+
+The highest-priority targets are the ones that combine both: broad access to sensitive data through ungoverned identities. These are the shadow data flows that IBM's report shows drive the highest breach costs and the longest containment times.
+
+### Step 3: Bring Identities Under Governance Where Possible
+
+For unsanctioned apps that the business genuinely needs, the goal is to bring their identities into your governance framework rather than to shut them down. Practically, this means:
+
+- **Migrate to sanctioned equivalents** where they exist, and provision access through your normal identity lifecycle.
+
+- **Integrate unsanctioned-but-necessary apps into your identity provider** via SSO and SCIM provisioning, so that joiner-mover-leaver processes apply and access reviews cover them.
+
+- **Replace personal credentials with governed service identities** for integrations — managed identities, workload identities with short-lived credentials, or API keys stored in a secrets manager with rotation policies.
+
+- **Revoke orphaned credentials** identified during discovery, and establish a process for identifying them on an ongoing basis.
+
+The principle is to convert shadow identities into governed identities wherever the business need is legitimate. Shutting down the app without addressing the need just moves the problem.
+
+### Step 4: Control the Data Flows You Cannot Eliminate
+
+Some unsanctioned usage will persist. For those cases, the control objective shifts from identity governance to data flow control:
+
+- **Egress filtering and CASB**: Block or alert on data flows to unsanctioned destinations, particularly for sensitive data classifications.
+
+- **DLP at the sanctioned boundary**: Prevent sensitive data from leaving sanctioned systems in the first place, so that it cannot reach unsanctioned tools.
+
+- **Encryption and classification at source**: IBM's recommendation to "identify, classify, encrypt" applies here — data that is classified and encrypted before it leaves the controlled environment is less valuable to an attacker and easier to trace.
+
+- **AI-specific controls**: Extend posture management to AI models, as IBM recommends, to gain visibility into unsanctioned model use, data leakage, and malicious drift.
+
+### Step 5: Reduce the Friction That Drives Shadow IT
+
+This is the step most IAM programs skip, and it is the one that determines whether the other steps succeed. If the sanctioned path remains slow and misaligned with business needs, discovery and remediation become a permanent game of whack-a-mole.
+
+The CIO.com recommendation — DevOps teams aligned to business needs, delivering at the speed of business — is the service-delivery answer. The IAM answer is to make the sanctioned path fast for low-risk access: self-service catalogs, automated provisioning, pre-approved SaaS and AI tools with security review baked in. The goal is that the easiest way to get the capability is also the governed way.
+
+---
+
+## Where IAM Fits in the Broader Response
+
+IBM's recommendations — encrypt, adopt DSPM, rethink data protection for the AI era, evolve with regulatory demands — are primarily data-security recommendations. They are necessary, but they are not sufficient without IAM. DSPM tells you where sensitive data is; IAM tells you who can reach it and through which identities. Encryption protects data at rest and in transit; IAM controls who can decrypt it and under what conditions.
+
+The integration point is the identity-to-data access path. Every shadow data flow is moved by an identity. Every breach involving shadow data involved a credential that had access it should not have had, or that was not revoked when it should have been. The IAM program's contribution to shadow IT risk reduction is to make those identities visible, governed, and revocable — and to make the sanctioned path fast enough that the business does not need to create them in the first place.
+
+The 24 percent figure from IBM's executive survey — only 24 percent of new generative AI initiatives include a security component — is the clearest signal of where the next wave of shadow IT will come from. AI initiatives are being launched at speed, often outside central IT, with data flowing into models that no one has reviewed. The IAM controls for that wave — governed service identities for AI workloads, classification and access control on training data, visibility into which identities can reach which models — need to be in place before the initiatives scale, not after.
+
+---
+
+## Conclusion: Compete, Then Govern
+
+The industry data paints a consistent picture. Shadow IT is large — 30 to 40 percent of IT spending by Gartner's estimate, more by others. It is costly when it goes wrong — USD 5.27 million average breach cost where shadow data is involved, 291 days average containment time. And it is growing, driven by the same SaaS, cloud, and AI economics that make it easy to adopt and hard to see.
+
+The IAM response cannot be to tighten policy and hope for compliance. Shadow IT is a service-delivery problem, and the organizations that reduce it most effectively are the ones that out-compete it: fast, aligned, governed access to the tools the business needs, with discovery and governance extended to the tools the business adopts anyway.
+
+The practical sequence is discover, classify, govern what you can, control the data flows you cannot eliminate, and reduce the friction that drives the problem in the first place. Each step depends on the one before it, and the first step — discovery — is where most IAM programs are weakest, because it requires looking outside the directory for identities and access paths that were never designed to appear there.
+
+The organizations that get this right will not eliminate shadow IT. They will shrink the ungoverned portion of their estate, bring the highest-risk identities and data flows under control, and build the visibility needed to respond when — not if — an unsanctioned app becomes the entry point for an incident. That is a realistic goal, and it is a far better use of IAM effort than a policy the business cannot follow and a detection capability that only sees what it already knows to look for.
+
+`
+  },
+  {
     id: "11",
     title: "SailPoint Identity Security Cloud: Its Place in the Modern IAM Architecture",
     slug: "sailpoint-identity-security-cloud-its-place-in-the-modern-iam-architecture",
